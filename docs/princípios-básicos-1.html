@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Princípios Básicos | Uma Breve Inrodução ao R</title>
+  <meta name="description" content="2 Princípios Básicos | Uma Breve Inrodução ao R" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Princípios Básicos | Uma Breve Inrodução ao R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="elemosjr/curso_rmarkdown" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Princípios Básicos | Uma Breve Inrodução ao R" />
+  
+  
+  
+
+<meta name="author" content="Vitor José Landi Silvério" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="princípios-básicos.html"/>
+<link rel="next" href="estatística-básica.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="princípios-básicos.html">Curso de RMarkdown</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="princípios-básicos.html"><a href="princípios-básicos.html"><i class="fa fa-check"></i><b>1</b> Princípios Básicos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="princípios-básicos.html"><a href="princípios-básicos.html#primeiros-passos"><i class="fa fa-check"></i><b>1.1</b> Primeiros Passos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="princípios-básicos.html"><a href="princípios-básicos.html#comandos-básicos"><i class="fa fa-check"></i><b>1.1.1</b> Comandos Básicos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="princípios-básicos.html"><a href="princípios-básicos.html#atribuição-de-valores"><i class="fa fa-check"></i><b>1.1.2</b> Atribuição de Valores</a></li>
+<li class="chapter" data-level="1.1.3" data-path="princípios-básicos.html"><a href="princípios-básicos.html#tipos-de-variáveis"><i class="fa fa-check"></i><b>1.1.3</b> Tipos de Variáveis</a></li>
+<li class="chapter" data-level="1.1.4" data-path="princípios-básicos.html"><a href="princípios-básicos.html#utilizando-ajuda-help"><i class="fa fa-check"></i><b>1.1.4</b> Utilizando Ajuda (help)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="princípios-básicos.html"><a href="princípios-básicos.html#operações-básicas"><i class="fa fa-check"></i><b>1.2</b> Operações Básicas</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="princípios-básicos.html"><a href="princípios-básicos.html#operações-simples"><i class="fa fa-check"></i><b>1.2.1</b> Operações simples</a></li>
+<li class="chapter" data-level="1.2.2" data-path="princípios-básicos.html"><a href="princípios-básicos.html#operações-lógicas"><i class="fa fa-check"></i><b>1.2.2</b> Operações lógicas</a></li>
+<li class="chapter" data-level="1.2.3" data-path="princípios-básicos.html"><a href="princípios-básicos.html#operações-matemáticas"><i class="fa fa-check"></i><b>1.2.3</b> Operações matemáticas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html"><i class="fa fa-check"></i><b>2</b> Princípios Básicos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#primeiros-passos-1"><i class="fa fa-check"></i><b>2.1</b> Primeiros Passos</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#comandos-básicos-1"><i class="fa fa-check"></i><b>2.1.1</b> Comandos Básicos</a></li>
+<li class="chapter" data-level="2.1.2" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#atribuição-de-valores-1"><i class="fa fa-check"></i><b>2.1.2</b> Atribuição de Valores</a></li>
+<li class="chapter" data-level="2.1.3" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#tipos-de-variáveis-1"><i class="fa fa-check"></i><b>2.1.3</b> Tipos de Variáveis</a></li>
+<li class="chapter" data-level="2.1.4" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#utilizando-ajuda-help-1"><i class="fa fa-check"></i><b>2.1.4</b> Utilizando Ajuda (help)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#operações-básicas-1"><i class="fa fa-check"></i><b>2.2</b> Operações Básicas</a></li>
+<li class="chapter" data-level="2.3" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#estruturas-básicas"><i class="fa fa-check"></i><b>2.3</b> Estruturas Básicas</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#vetor"><i class="fa fa-check"></i><b>2.3.1</b> Vetor</a></li>
+<li class="chapter" data-level="2.3.2" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#matriz"><i class="fa fa-check"></i><b>2.3.2</b> Matriz</a></li>
+<li class="chapter" data-level="2.3.3" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#array"><i class="fa fa-check"></i><b>2.3.3</b> Array</a></li>
+<li class="chapter" data-level="2.3.4" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#lista"><i class="fa fa-check"></i><b>2.3.4</b> Lista</a></li>
+<li class="chapter" data-level="2.3.5" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#data-frame"><i class="fa fa-check"></i><b>2.3.5</b> Data Frame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#tabelas"><i class="fa fa-check"></i><b>2.4</b> Tabelas</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#tabelas-simples"><i class="fa fa-check"></i><b>2.4.1</b> Tabelas Simples</a></li>
+<li class="chapter" data-level="2.4.2" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#tabelas-de-contingência"><i class="fa fa-check"></i><b>2.4.2</b> Tabelas de Contingência</a></li>
+<li class="chapter" data-level="2.4.3" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#tabelas-de-proporção"><i class="fa fa-check"></i><b>2.4.3</b> Tabelas de Proporção</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#funções"><i class="fa fa-check"></i><b>2.5</b> Funções</a></li>
+<li class="chapter" data-level="2.6" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#funções---apply"><i class="fa fa-check"></i><b>2.6</b> Funções - Apply</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#apply"><i class="fa fa-check"></i><b>2.6.1</b> Apply</a></li>
+<li class="chapter" data-level="2.6.2" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#tapply"><i class="fa fa-check"></i><b>2.6.2</b> Tapply</a></li>
+<li class="chapter" data-level="2.6.3" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#sapply"><i class="fa fa-check"></i><b>2.6.3</b> Sapply</a></li>
+<li class="chapter" data-level="2.6.4" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#lapply"><i class="fa fa-check"></i><b>2.6.4</b> Lapply</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#pacotes"><i class="fa fa-check"></i><b>2.7</b> Pacotes</a></li>
+<li class="chapter" data-level="2.8" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#entrada-de-dados"><i class="fa fa-check"></i><b>2.8</b> Entrada de Dados</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#csv"><i class="fa fa-check"></i><b>2.8.1</b> Csv</a></li>
+<li class="chapter" data-level="2.8.2" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#txt"><i class="fa fa-check"></i><b>2.8.2</b> Txt</a></li>
+<li class="chapter" data-level="2.8.3" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#xls-ou-xlsx"><i class="fa fa-check"></i><b>2.8.3</b> Xls ou Xlsx</a></li>
+<li class="chapter" data-level="2.8.4" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#base-de-dados-do-r"><i class="fa fa-check"></i><b>2.8.4</b> Base de dados do R</a></li>
+<li class="chapter" data-level="2.8.5" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#opções-importantes"><i class="fa fa-check"></i><b>2.8.5</b> Opções Importantes</a></li>
+<li class="chapter" data-level="2.8.6" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#conferência-dos-dados"><i class="fa fa-check"></i><b>2.8.6</b> Conferência dos dados</a></li>
+<li class="chapter" data-level="2.8.7" data-path="princípios-básicos-1.html"><a href="princípios-básicos-1.html#funções-adicionais"><i class="fa fa-check"></i><b>2.8.7</b> Funções Adicionais</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estatística-básica.html"><a href="estatística-básica.html"><i class="fa fa-check"></i><b>3</b> Estatística Básica</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="estatística-básica.html"><a href="estatística-básica.html#medidas-de-posição"><i class="fa fa-check"></i><b>3.1</b> Medidas de Posição</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="estatística-básica.html"><a href="estatística-básica.html#média"><i class="fa fa-check"></i><b>3.1.1</b> Média</a></li>
+<li class="chapter" data-level="3.1.2" data-path="estatística-básica.html"><a href="estatística-básica.html#mediana"><i class="fa fa-check"></i><b>3.1.2</b> Mediana</a></li>
+<li class="chapter" data-level="3.1.3" data-path="estatística-básica.html"><a href="estatística-básica.html#mínimo"><i class="fa fa-check"></i><b>3.1.3</b> Mínimo</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estatística-básica.html"><a href="estatística-básica.html#máximo"><i class="fa fa-check"></i><b>3.1.4</b> Máximo</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estatística-básica.html"><a href="estatística-básica.html#quantis"><i class="fa fa-check"></i><b>3.1.5</b> Quantis</a></li>
+<li class="chapter" data-level="3.1.6" data-path="estatística-básica.html"><a href="estatística-básica.html#moda"><i class="fa fa-check"></i><b>3.1.6</b> Moda</a></li>
+<li class="chapter" data-level="3.1.7" data-path="estatística-básica.html"><a href="estatística-básica.html#função-summary"><i class="fa fa-check"></i><b>3.1.7</b> Função Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="estatística-básica.html"><a href="estatística-básica.html#medidas-de-dispersão"><i class="fa fa-check"></i><b>3.2</b> Medidas de Dispersão</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="estatística-básica.html"><a href="estatística-básica.html#variância"><i class="fa fa-check"></i><b>3.2.1</b> Variância</a></li>
+<li class="chapter" data-level="3.2.2" data-path="estatística-básica.html"><a href="estatística-básica.html#desvio-padrão"><i class="fa fa-check"></i><b>3.2.2</b> Desvio Padrão</a></li>
+<li class="chapter" data-level="3.2.3" data-path="estatística-básica.html"><a href="estatística-básica.html#coeficiente-de-variação"><i class="fa fa-check"></i><b>3.2.3</b> Coeficiente de Variação</a></li>
+<li class="chapter" data-level="3.2.4" data-path="estatística-básica.html"><a href="estatística-básica.html#amplitude"><i class="fa fa-check"></i><b>3.2.4</b> Amplitude</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estatística-básica.html"><a href="estatística-básica.html#correlação"><i class="fa fa-check"></i><b>3.3</b> Correlação</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="estatística-básica.html"><a href="estatística-básica.html#coeficiente-de-pearson"><i class="fa fa-check"></i><b>3.3.1</b> Coeficiente de Pearson</a></li>
+<li class="chapter" data-level="3.3.2" data-path="estatística-básica.html"><a href="estatística-básica.html#coeficiente-de-kendall"><i class="fa fa-check"></i><b>3.3.2</b> Coeficiente de Kendall</a></li>
+<li class="chapter" data-level="3.3.3" data-path="estatística-básica.html"><a href="estatística-básica.html#coeficiente-de-spearman"><i class="fa fa-check"></i><b>3.3.3</b> Coeficiente de Spearman</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="gráficos.html"><a href="gráficos.html"><i class="fa fa-check"></i><b>4</b> Gráficos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="gráficos.html"><a href="gráficos.html#gráficos-para-variáveis-qualitativas"><i class="fa fa-check"></i><b>4.1</b> Gráficos para Variáveis Qualitativas</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="gráficos.html"><a href="gráficos.html#gráfico-de-barras"><i class="fa fa-check"></i><b>4.1.1</b> Gráfico de Barras</a></li>
+<li class="chapter" data-level="4.1.2" data-path="gráficos.html"><a href="gráficos.html#gráfico-de-setores"><i class="fa fa-check"></i><b>4.1.2</b> Gráfico de Setores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="gráficos.html"><a href="gráficos.html#gráficos-para-variáveis-quantitativas"><i class="fa fa-check"></i><b>4.2</b> Gráficos para Variáveis Quantitativas</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="gráficos.html"><a href="gráficos.html#histograma"><i class="fa fa-check"></i><b>4.2.1</b> Histograma</a></li>
+<li class="chapter" data-level="4.2.2" data-path="gráficos.html"><a href="gráficos.html#polígono-de-frequência"><i class="fa fa-check"></i><b>4.2.2</b> Polígono de frequência</a></li>
+<li class="chapter" data-level="4.2.3" data-path="gráficos.html"><a href="gráficos.html#gráfico-de-bastões"><i class="fa fa-check"></i><b>4.2.3</b> Gráfico de Bastões</a></li>
+<li class="chapter" data-level="4.2.4" data-path="gráficos.html"><a href="gráficos.html#gráfico-de-dispersão"><i class="fa fa-check"></i><b>4.2.4</b> Gráfico de Dispersão</a></li>
+<li class="chapter" data-level="4.2.5" data-path="gráficos.html"><a href="gráficos.html#gráfico-de-caixas-boxplot"><i class="fa fa-check"></i><b>4.2.5</b> Gráfico de Caixas (<em>Boxplot</em>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="gráficos.html"><a href="gráficos.html#ajustes-gráficos"><i class="fa fa-check"></i><b>4.3</b> Ajustes Gráficos</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="gráficos.html"><a href="gráficos.html#principais-ajustes"><i class="fa fa-check"></i><b>4.3.1</b> Principais Ajustes</a></li>
+<li class="chapter" data-level="4.3.2" data-path="gráficos.html"><a href="gráficos.html#funções-de-sobreposição"><i class="fa fa-check"></i><b>4.3.2</b> Funções de sobreposição</a></li>
+<li class="chapter" data-level="4.3.3" data-path="gráficos.html"><a href="gráficos.html#argumento-type"><i class="fa fa-check"></i><b>4.3.3</b> Argumento <em>type</em></a></li>
+<li class="chapter" data-level="4.3.4" data-path="gráficos.html"><a href="gráficos.html#tipos-de-símbolos-e-linhas"><i class="fa fa-check"></i><b>4.3.4</b> Tipos de Símbolos e Linhas</a></li>
+<li class="chapter" data-level="4.3.5" data-path="gráficos.html"><a href="gráficos.html#texto-e-legenda"><i class="fa fa-check"></i><b>4.3.5</b> Texto e Legenda</a></li>
+<li class="chapter" data-level="4.3.6" data-path="gráficos.html"><a href="gráficos.html#utilizando-par-e-comandos-adicionais"><i class="fa fa-check"></i><b>4.3.6</b> Utilizando <em>par</em> e comandos adicionais</a></li>
+<li class="chapter" data-level="4.3.7" data-path="gráficos.html"><a href="gráficos.html#cores"><i class="fa fa-check"></i><b>4.3.7</b> Cores</a></li>
+<li class="chapter" data-level="4.3.8" data-path="gráficos.html"><a href="gráficos.html#janelas-gráficas-externas"><i class="fa fa-check"></i><b>4.3.8</b> Janelas gráficas externas</a></li>
+<li class="chapter" data-level="4.3.9" data-path="gráficos.html"><a href="gráficos.html#representando-tabelas-de-contingência"><i class="fa fa-check"></i><b>4.3.9</b> Representando Tabelas de Contingência</a></li>
+<li class="chapter" data-level="4.3.10" data-path="gráficos.html"><a href="gráficos.html#representando-funções"><i class="fa fa-check"></i><b>4.3.10</b> Representando Funções</a></li>
+<li class="chapter" data-level="4.3.11" data-path="gráficos.html"><a href="gráficos.html#exportano-gráficos"><i class="fa fa-check"></i><b>4.3.11</b> Exportano Gráficos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html"><i class="fa fa-check"></i><b>5</b> Noções de Probabilidade</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#amostragem"><i class="fa fa-check"></i><b>5.1</b> Amostragem</a></li>
+<li class="chapter" data-level="5.2" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#análise-combinatória"><i class="fa fa-check"></i><b>5.2</b> Análise Combinatória</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#permutação"><i class="fa fa-check"></i><b>5.2.1</b> Permutação</a></li>
+<li class="chapter" data-level="5.2.2" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#arranjo"><i class="fa fa-check"></i><b>5.2.2</b> Arranjo</a></li>
+<li class="chapter" data-level="5.2.3" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#combinação"><i class="fa fa-check"></i><b>5.2.3</b> Combinação</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#distribuições-de-probabilidade"><i class="fa fa-check"></i><b>5.3</b> Distribuições de Probabilidade</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#geração-de-valores-aleatórios"><i class="fa fa-check"></i><b>5.3.1</b> Geração de valores aleatórios</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#função-de-densidade-probabilidade"><i class="fa fa-check"></i><b>5.4</b> Função de Densidade / Probabilidade</a></li>
+<li class="chapter" data-level="5.5" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#função-acumulada"><i class="fa fa-check"></i><b>5.5</b> Função Acumulada</a></li>
+<li class="chapter" data-level="5.6" data-path="noções-de-probabilidade.html"><a href="noções-de-probabilidade.html#quantis-1"><i class="fa fa-check"></i><b>5.6</b> Quantis</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uma Breve Inrodução ao R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="princípios-básicos-1" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Princípios Básicos</h1>
+<div id="primeiros-passos-1" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Primeiros Passos</h2>
+<div id="comandos-básicos-1" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Comandos Básicos</h3>
+</div>
+<div id="atribuição-de-valores-1" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Atribuição de Valores</h3>
+</div>
+<div id="tipos-de-variáveis-1" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Tipos de Variáveis</h3>
+</div>
+<div id="utilizando-ajuda-help-1" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Utilizando Ajuda (help)</h3>
+</div>
+</div>
+<div id="operações-básicas-1" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Operações Básicas</h2>
+</div>
+<div id="estruturas-básicas" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Estruturas Básicas</h2>
+<div id="vetor" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Vetor</h3>
+</div>
+<div id="matriz" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Matriz</h3>
+</div>
+<div id="array" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Array</h3>
+</div>
+<div id="lista" class="section level3" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Lista</h3>
+</div>
+<div id="data-frame" class="section level3" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> Data Frame</h3>
+</div>
+</div>
+<div id="tabelas" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Tabelas</h2>
+<div id="tabelas-simples" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Tabelas Simples</h3>
+</div>
+<div id="tabelas-de-contingência" class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Tabelas de Contingência</h3>
+</div>
+<div id="tabelas-de-proporção" class="section level3" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Tabelas de Proporção</h3>
+</div>
+</div>
+<div id="funções" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Funções</h2>
+</div>
+<div id="funções---apply" class="section level2" number="2.6">
+<h2><span class="header-section-number">2.6</span> Funções - Apply</h2>
+<div id="apply" class="section level3" number="2.6.1">
+<h3><span class="header-section-number">2.6.1</span> Apply</h3>
+</div>
+<div id="tapply" class="section level3" number="2.6.2">
+<h3><span class="header-section-number">2.6.2</span> Tapply</h3>
+</div>
+<div id="sapply" class="section level3" number="2.6.3">
+<h3><span class="header-section-number">2.6.3</span> Sapply</h3>
+</div>
+<div id="lapply" class="section level3" number="2.6.4">
+<h3><span class="header-section-number">2.6.4</span> Lapply</h3>
+</div>
+</div>
+<div id="pacotes" class="section level2" number="2.7">
+<h2><span class="header-section-number">2.7</span> Pacotes</h2>
+</div>
+<div id="entrada-de-dados" class="section level2" number="2.8">
+<h2><span class="header-section-number">2.8</span> Entrada de Dados</h2>
+<div id="csv" class="section level3" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> Csv</h3>
+</div>
+<div id="txt" class="section level3" number="2.8.2">
+<h3><span class="header-section-number">2.8.2</span> Txt</h3>
+</div>
+<div id="xls-ou-xlsx" class="section level3" number="2.8.3">
+<h3><span class="header-section-number">2.8.3</span> Xls ou Xlsx</h3>
+</div>
+<div id="base-de-dados-do-r" class="section level3" number="2.8.4">
+<h3><span class="header-section-number">2.8.4</span> Base de dados do R</h3>
+</div>
+<div id="opções-importantes" class="section level3" number="2.8.5">
+<h3><span class="header-section-number">2.8.5</span> Opções Importantes</h3>
+</div>
+<div id="conferência-dos-dados" class="section level3" number="2.8.6">
+<h3><span class="header-section-number">2.8.6</span> Conferência dos dados</h3>
+</div>
+<div id="funções-adicionais" class="section level3" number="2.8.7">
+<h3><span class="header-section-number">2.8.7</span> Funções Adicionais</h3>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="princípios-básicos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estatística-básica.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rmarkdown.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
