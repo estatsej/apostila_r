@@ -1,4 +1,4 @@
-book_filename: "rmarkdown"
+book_filename: "apostila_r"
 delete_merged_file: true
 language:
   ui:

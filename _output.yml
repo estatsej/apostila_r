@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="princípios-básicos.html">Curso de RMarkdown</a></li>
+        <li><a href="princípios-básicos.html">Introdução ao R</a></li>
       after: |
         <li><a href="https://bookdown.org" target="blank">Published with bookdown</a></li>
     sharing:
