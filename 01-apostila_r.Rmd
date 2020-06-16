@@ -7,31 +7,209 @@ output:
     toc_float: true
 ---
 
-# Princípios Básicos
-
-## Primeiros Passos
-
-### Comandos Básicos
-
-### Atribuição de Valores
-
-### Tipos de Variáveis
-
-### Utilizando Ajuda (help)
-
-## Operações Básicas
-
-## Estruturas Básicas
-
 ### Vetor
 
+Um vetor é um conjunto de valores atribuidos à uma variável. Para criar um vetor, utiliza-se o comando `c()`.
+
+Exemplos de vetores:
+```{r}
+vetor1 <- c(1, 1, 2, 3, 5, 8)
+idades <- c(17, 20, 22, 18, 30)
+alunos <- c("Ricardo", "Samuel", "Vitor", "Ellen", "Mariana")
+vetor2 <- c(0, vetor1, 0)
+
+```
+
+Existem funções que permitem criar e manipular vetores com características com maior facilidade, a seguir, estão algumas delas:
+
+
+**Sequências**
+
+Para criar um vetor baseado em uma sequência, pode-se usar a função `seq()`, que cria um vetor do valor A até o valor Z.
+
+Exemplos:
+
+```{r }
+# Criar um vetor de 1 a 10
+vetor1 <- seq(from = 1, to = 10)
+vetor1
+
+#outra forma de criar o vetor de 1 a 10
+vetor1.1 <- 1:10
+```
+
+Perceba que, por padrão, o intervalo entre os números gerados é 1. Porém, também pode-se alterar a distância entre os elementos ( ou a "distância de passos"), com o argumento `by = N`, e a quantidade de elementos criados, com o argumento `length.out = N`.
+
+Exemplos:
+
+```{r} 
+# Criar vetor de 1 a 10, com tamanho do passo = 2
+vetor2 <- seq(from = 1, to = 10, by = 2)
+vetor2
+
+# Criar vetor de 1 a 10, com 4 elementos
+vetor3 <- seq(from = 1, to = 10, length.out = 4)
+vetor3
+
+```
+
+**Operações em vetores**
+
+É possível aplicar uma série de operações em vetores, a seguir, algumas das operações mais utilizadas:
+
+- `length(x)`: número de elementos do vetor x
+- `sum(x)`: soma dos elementos do vetor x
+- `prod(x)`: produto dos elementos do vetor x
+- `max(x)`: seleciona o maior elemento do vetor x
+- `min(x)`: seleciona o menor elemento do vetor x
+- `range(x)`: retorna o menor e o maior elemento do vetor x
+
+**Criando vetores com a função `paste`**
+
+É possível também manipular vetores "colando" partes com a função `paste`.
+
+Pode-se usá-lo para adicionar tanto um prefixo quanto um sufixo, usando as seguintes sintaxes:
+
+- Prefixo: `paste("prefixo", vetor, sep = "separador")`
+- Sufixo: `paste(vetor, "sufixo", sep = "separador")`
+
+Exemplos:
+
+```{r }
+x <- 1:10
+# adicionando o prefixo "número", separando com "_"
+paste("número", x, sep = "_")
+
+
+# adicionando sufixo e atribuindo o resultado à variavel "y"
+y <- c(paste(11:20, "número", sep = "%"))
+y
+
+```
+
+Caso deseja-se adicionar um elemento "grudado" ao valor, pode-se tanto usar o argumento `sep=""` dentro da função `paste`, como a função `paste0`.
+
+Exemplo:
+
+```{r}
+# usando sep = ""
+z <- c(paste("numero", 21:30, sep = ""))
+z
+
+#usando paste0
+w <- c(paste0("numero", 21:30))
+w
+```
+
+**Repetições**
+
+É possível repetir um elemento ou um vetor com a função `rep()`. A seguir, alguns dos argumentos mais utilizados dentro da função:
+
+- `times`: define o número de vezes que o número ou vetor inteiro será repetido
+- `each`: define o número de vezes que cada elemento em um vetor será repetido
+- `length.out`: define o tamanho do vetor de saída
+
+Exemplos:
+
+```{r}
+# repetindo um número 10 vezes
+r1 <- rep(5, times = 10) # ou somente rep(5,10)
+r1
+
+x <- c("a", "b", "c")
+
+# repetindo o vetor inteiro 5 vezes
+rep(x, times = 5)
+
+# repetindo cada elemento do vetor 5 vezes
+rep(x, each = 5)
+
+# criando um vetor de tamnaho 7
+rep(x, length.out = 7)
+
+```
+
+**Selecionando um elemento no vetor**
+
+Caso deseja-se saber qual o elemento se encontra em uma determinada posição de um vetor, denotada por *i*, pode-se localizá-lo utilizando a sintaxe `vetor[i]`
+
+Vale ressaltar que a contagem é iniciada a partir do valor 1, diferente de certas linguagens de programação em que a contagem começa na posição 0.
+
+Exemplo:
+
+```{r}
+# localizando o décimo terceiro número par entre 10 e 50
+valores <- seq(10, 50, by = 2)
+valores[13]
+
+```
+
 ### Matriz
+
+Uma matriz é uma generalização de um vetor, tendo duas dimensões (linhas e colunas). Podemos pensar em um vetor como uma matriz com uma de suas dimensões igual a 1.
+A sintaxe é dada abaixo, em que "L"é o número de linhas, "C"é o número de colunas e se "Q"= 1
+ativa disposição por linhas, se "Q"= 0 mantém disposição por colunas (ou T ou F).
+
+
+`x <- matrix(data = dados, nrow = L, ncol = C, byrow = Q) `
+
+Exemplos:
+
+```{r}
+# Criando uma matriz de 2 linhas, 5 colunas e disposição por linhas
+
+ml <- matrix(data = c(1:10), nrow = 2, ncol = 5, byrow = 1)
+ml
+
+# Criando uma matriz de 2 linhas, 5 colunas e dispoção por colunas:
+mc <- matrix(data = c(1:10), nrow = 2, ncol = 5, byrow = 0)
+mc
+```
+
+
+**Selecionando elemento da matriz**
+
+Para selecionar um elemento de uma matriz utilizamos a indexação por colchetes na variável que
+representa a matriz com os índices separados por vírgula.
+
+ 
+Exemplos: 
+```{r}
+# Selecionando a linha 2 e coluna 4 da matriz ml
+ml[2,4]
+
+# Selecionando a linha 2 da matriz ml
+ml[2,]
+
+# Selecionando as colunas 2,3 e 4 da matriz ml
+ml[,2:4]
+
+# Outra forma de ler a matriz ml
+ml[,]
+```
+
+
+**Operações de matrizes**
+
+-`A*B`: Produto elemento a elemento de A e B
+-`A% * &B`: Produto matricial de A por B
+-`apern(A)`: Matriz transposta de A
+-`t(A)`: Matriz transposta de A
+-`solve(A)`: Matriz inversa de A
+-`solve(A,B)`: Resolve o sistema linear Ax = B
+-`det(A)`: Retorna o determinante de A
+-`diag(v)`: Retorna uma matriz diagonal onde o vetor v é a diagonal
+-`diag(A)`: Retorna um vetor que é a diagonal de A
+-`diag(n)`: Sendo n um inteiro, retorna uma matriz identidade de ordem n
+-`eigen(A)`: Retorna os autovalores e autovetores de A
+
 
 ### Array
 
 ### Lista
 
 ### Data Frame
+
 
 ## Tabelas
 
