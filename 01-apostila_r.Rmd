@@ -1,6 +1,6 @@
 ---
 title: "Uma Breve Inrodução ao R"
-author: "Vitor José Landi Silvério"
+author: "Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi"
 output: 
   html_document:
     toc: true
