@@ -1,6 +1,6 @@
 ---
 title: "Uma Breve Introdução ao R"
-author: "Ricardo Masuda, Samuel Vianna, Vitor Landi"
+author: "Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi"
 output: pdf_document
 documentclass: book
 link-citations: yes
