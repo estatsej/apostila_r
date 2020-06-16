@@ -6,7 +6,7 @@ documentclass: book
 link-citations: yes
 site: bookdown::bookdown_site
 biblio-style: apalike
-github-repo: elemosjr/curso_rmarkdown
+github-repo: estatsej/apostila_r
 ---
 
 ```{r, include = FALSE}
