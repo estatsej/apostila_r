@@ -7,6 +7,8 @@ output:
     toc_float: true
 ---
 
+## Estruturas Básicas
+
 ### Vetor
 
 Um vetor é um conjunto de valores atribuidos à uma variável. Para criar um vetor, utiliza-se o comando `c()`.
