@@ -272,13 +272,159 @@ x[[2]][3]
 
 ### Data Frame
 
+O data-frame é uma estrutura semelhante à uma matriz porém com cada coluna sendo tratada separadamente. Desta forma podemos ter colunas de valores numéricos e colunas de caracteres no mesmo objeto. 
+
+Dentro da mesma coluna todos elementos tem que ser do mesmo tipo. Cada vetor (coluna) tem que ter o mesmo número de observações. 
+
+A sintaxe é dada da seguinte forma:
+
+`data.frame(elemento1 = x1,..., elementoN = xn)`
+
+Exemplo:
+```{r}
+n <− c(2, 3, 5)
+s <− c(" aa ", " bb ", " cc ")
+b <− c(TRUE, FALSE , TRUE)
+t <− c(paste0("H" ,1:3) )
+
+# Criando um data-frame df com elementos(vetores) n, s, b e t
+df <− data.frame(n, s, b, t)
+df
+```
+
+Pode-se alterar tanto o nome das linhas como o nome das colunas de um data frame, utilizando as funções `row.names()` e `col.names()`, respectivamente.
+
+
+Exemplos:
+
+```{r}
+# Dando nome as linhas do data-frame df
+row.names(df) <- c("linha1","linha2","linha3")
+df
+```
+
+É possível selecionar um determinado elemento dentro de um data frame, selecionando uma linha e coluna especifica de duas formas diferentes:
+
+```{r}
+# Selecionando observação da primeira linha e segunda coluna do data-frame
+df[1,2]
+
+
+# Outra forma de selecionar a observação da primeira linha e segunda coluna do data-frame
+df["linha1", "s"]
+```
+
+De forma análoga, pode-se selecionar uma coluna inteira de um data frame. pode-se imprimir o output de duas formas: como um vetor e como coluna de um data frame.
+
+Exemplos de output como vetor:
+
+```{r}
+# Duas formas de imprimir um vetor com os elementos da terceira coluna
+df[[3]]
+df[["b"]]
+
+
+# Outras formas de imprimir um vetor com elementos da terceira coluna
+{r}
+df$b
+df[,"b"]
+df[,3]
+```
+
+Exemplos de output como coluna:
+
+```{r}
+# Imprimir apenas a terceira coluna
+df[3]
+df["b"]
+
+
+# Imprimir apenas a segunda e a terceira coluna
+df[c("b", "s")]
+```
+
+
+Também é possível selecionar uma linha especifica de um data frame. Neste caso, o R retornará na mesma estrutura do data-frame apenas a linha específica.
+
+Sintaxe:
+
+`dataframe[linha,]`
+
+Exemplos: 
+
+```{r}
+# Imprimir apenas a segunda linha
+df[2,]
+df['linha2',]
+
+# Imprimir apenas a segunda e a terceira linha
+df[c(2,3),]
+df[c("linha2", "linha3"),]
+```
+
+
 ## Tabelas
 
-### Tabela Simples
+Uma das formas de se visualizar facilmente os dados é por meio de tabelas, permitindo um olhar mais amplo e claro de um conjunto de informações.
 
-### Contingência
+### Tabelas Simples
 
-### Proporção
+Para criar uma tabela simples de uma variavel, utiliza-se a função `table(variavel)`.
+
+Exemplo:
+```{r}
+# criando uma tabela simples para a variavel "sexo"
+sexo <- c("F", "F", "F", "M", "M")
+table(sexo)
+
+# criando uma tablea simples para a variavel "turma"
+turma <- c(rep("A", 2), rep("B", 3))
+table(turma)
+```
+
+### Tabelas de Contingência
+
+Uma tabela de contingência é usada quando se deseja cruzar informações sobre duas variáveis.
+
+A sintaxe utilizada é semelhante à anterior: `table(variavel1, variavel2)`
+
+Exemplo:
+```{r}
+# criando uma tabela de contingência para as variáveis "sexo" e "turma"
+table(sexo, turma)
+```
+
+*Observação:* Para criar uma tabela de contingência com duas variáveis é necessário que ambas tenham o mesmo número de elementos.
+
+### Tabelas de Proporção
+
+Quando é de interesse obter a frequência relativa das variáveis de uma tabela de contingência, utiliza-se a tabela de proporção, usando a seguinte sintaxe:
+
+`prop.table(X = tabela, margin = ...)`
+
+*Observação:* Para utilizar a função acima, é necessário que a tabela de contingência da qual se deseja obter as frequências já tenha sido criada anteriormente e atribuida à um objeto.
+
+A opção `margin = ` indica qual a marginal será utilizada na tabela, seguindo a seguinte ordem:
+
+- `NULL`: proporção total 
+- `1`: proporção por linha
+- `2`: proporção por coluna
+
+Exemplo:
+
+```{r}
+#atribuindo a tabela ao elemento "tabela"
+tabela <- table(sexo, turma)
+
+# calculando a proporção total para a tabela anterior
+# prop.table(tabela) ou
+prop.table(tabela, margin = NULL) 
+
+# calculando a proporção por linha
+prop.table(tabela, margin = 1) 
+
+```
+
 
 ## Funções
 
@@ -317,7 +463,7 @@ Diferentes funções apply são usadas para diferentes estruturas de dados.
 
 ### Apply
 
-A função `apply` é utilizada em matrizes, data frames ou arrays. Ela retorna um vetor ou array dos valores obtidos aplicando a função argumento nos dados, sendo utilizada da seguinte forma:
+A função `apply` é utilizada em matrizes, --data frames-- ou arrays. Ela retorna um vetor ou array dos valores obtidos aplicando a função argumento nos dados, sendo utilizada da seguinte forma:
 
 ```{r apply_demonstracao, eval = FALSE}
 apply(X, Margem, Funcao)
