@@ -244,7 +244,7 @@ x
 
 *Operações com membros da lista*
 
-Para opeçãoes com membros da lista utiliza-se a sintaxe `lista[]`. A seguir, alguns exemplos utilizando a lista criada no exemplo anterior:
+Para operações com membros da lista utiliza-se a sintaxe `lista[]`. A seguir, alguns exemplos utilizando a lista criada no exemplo anterior:
 
 ```{r}
 # Imprimindo o segundo membro da lista x:
@@ -268,4 +268,146 @@ Exemplos:
 # Imprimindo o terceiro elemento do segundo membro da lista x
 
 x[[2]][3]
+```
+
+### Data Frame
+
+## Tabelas
+
+### Tabela Simples
+
+### Contingência
+
+### Proporção
+
+## Funções
+
+É possível escrever funções no R, funções são sequências de código definidas pelo usuário para executar uma sequência específica de comandos. A função é criada utilizando a função do R `function`:
+
+```{r sintaxe_funcoes, eval = FALSE}
+funcao <- function(argumento1, argumento2)
+{
+  sequencia de código utilizando os argumentos
+}
+```
+**Exemplos**
+```{r exemplo_funcoes_1}
+# Criando uma função para elevar um argumento x ao quadrado
+fx <- function(x){x^2}
+fx(2)
+```
+
+```{r exemplo_funcoes_2}
+y <- 1:10 # Criando um vetor com a sequencia de 1 a 10
+fx(y)
+```
+
+```{r}
+x <- matrix(1:15, nrow=5, ncol=3) # Criando uma matriz 3x5
+fx(x)
+```
+
+## Funções Apply
+
+Funções da família apply são funções feitas para se aplicar outras funções em diferentes tipos de estruturas de dados,
+a aplicação das funções nessas estruturas é feita ded forma iterativa sem a necessidade de usar loops (como `while` ou `for`).
+Diferentes funções apply são usadas para diferentes estruturas de dados.
+
+### Apply
+
+A função `apply` é utilizada em matrizes, data frames ou arrays. A função retorna um vetor ou array dos valores obtidos aplicando a função argumento nos dados. 
+A função é utilizada da seguinte forma:
+
+```{r apply_demonstracao, eval = FALSE}
+apply(X, Margem, Funcao)
+```
+
+Onde `X` representa os dados (array, matriz ou data.frame), `Margem` representa a margem que será utilizada na iteração, e `Funcao` representa a função a ser aplicada.
+
+**Exemplos**
+```{r exemplo_apply_1}
+matriz <- matrix(1:16, 4, 4) # Criando uma matriz 4x4
+matriz # Visualizando a matriz
+```
+Abaixo aplicamos a função sum (terceiro argumento) ao objeto matriz (primeiro argumento), na primeira marginal (segundo argumento), desta forma, a função `apply` retorna um vetor com as somas de cada linha da matriz.
+
+```{r}
+apply(matriz, 1, sum)
+```
+
+Abaixo, usamos o segundo argumento como `2`, assim, a função retorna um vetor com as somas das colunas da matriz.
+
+```{r}
+apply(matriz, 2, sum)
+```
+
+```{r}
+apply(matriz, 1, function(x){x^2+0.5})
+```
+
+### Tapply
+
+A função `tapply` funciona da mesma forma que a função `apply`, mas podendo usar uma variável como indice de marginal.
+A função é utilizada da seguinte forma:
+
+```{r tapply_demonstracao, eval = FALSE}
+tapply(X, Indice, Funcao)
+```
+
+**Exemplos**
+
+```{r exemplo_tapply}
+dados <- data.frame(sexo = rep(c("M", "F"),
+                               c(9, 11)),
+                    idade = c(79, 2, 95, 22, 25, 73, 82, 23, 6, 19,
+                              43, 39, 9, 88, 89, 41, 4, 13, 92, 33))
+tapply(dados$idade, dados$sexo, mean)
+```
+
+### Sapply
+
+A função `sapply` é utilizada para aplicar funções em cada elemento de um objeto de tipo lista. A função é utilizada da seguinte forma:
+
+```{r sapply_demonstracao, eval = FALSE}
+sapply(X, Funcao)
+```
+
+Onde `X` representa os dados (de tipo lista) e `Funcao` representa a função a ser aplicada em cada elemento dessa lista.
+
+**Exemplos**
+
+Abaixo a função sapply retorna um vetor de comprimento `3`, onde cada elemento representa o resultado da função `mean` de cada elemento da lista.
+
+```{r exemplo_sapply}
+x <- 1:10 # Criado um vetor de sequencia de 1 a 10
+y <- 2:14 # Criado um vetor de sequencia de 2 a 14
+z <- 60:90 # Criado um vetor de sequencia de 60 a 90
+
+lista <- list(x,y,z) # Criando uma lista com os objetos anteriores
+
+sapply(lista, mean) 
+```
+
+### Lapply
+
+A função `lapply` funciona da mesma forma que `sapply`, com as diferença que é retornado uma lista ao invés de um vetor dos resultados. A função é utilizada da seguinte forma:
+
+```{r lapply_demonstracao, eval = FALSE}
+lapply(X, Funcao)
+```
+
+Onde `X` representa os dados (de tipo lista) e `Funcao` representa a função a ser aplicada em cada elemento dessa lista.
+
+**Exemplos**
+
+Abaixo a função lapply retorna uma lista de comprimento `3`, onde cada elemento representa o resultado da função `mean` de cada elemento da lista.
+
+```{r exemplo_lapply}
+x <- 1:10 # Criado um vetor de sequencia de 1 a 10
+y <- 2:14 # Criado um vetor de sequencia de 2 a 14
+z <- 60:90 # Criado um vetor de sequencia de 60 a 90
+
+lista <- list(x,y,z) # Criando uma lista com os objetos anteriores
+
+lapply(lista, mean) 
 ```
