@@ -317,7 +317,7 @@ Diferentes funções apply são usadas para diferentes estruturas de dados.
 
 ### Apply
 
-A função `apply` é utilizada em matrizes, --data frames-- ou arrays. Ela retorna um vetor ou array dos valores obtidos aplicando a função argumento nos dados, sendo utilizada da seguinte forma:
+A função `apply` é utilizada em matrizes, data frames ou arrays. Ela retorna um vetor ou array dos valores obtidos aplicando a função argumento nos dados, sendo utilizada da seguinte forma:
 
 ```{r apply_demonstracao, eval = FALSE}
 apply(X, Margem, Funcao)
