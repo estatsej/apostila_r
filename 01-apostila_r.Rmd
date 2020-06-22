@@ -282,13 +282,13 @@ A sintaxe é dada da seguinte forma:
 
 Exemplo:
 ```{r}
-n <− c(2, 3, 5)
-s <− c(" aa ", " bb ", " cc ")
-b <− c(TRUE, FALSE , TRUE)
-t <− c(paste0("H" ,1:3) )
+n <- c(2, 3, 5)
+s <- c(" aa ", " bb ", " cc ")
+b <- c(TRUE, FALSE , TRUE)
+t <- c(paste0("H" ,1:3) )
 
 # Criando um data-frame df com elementos(vetores) n, s, b e t
-df <− data.frame(n, s, b, t)
+df <- data.frame(n, s, b, t)
 df
 ```
 
@@ -323,9 +323,7 @@ Exemplos de output como vetor:
 df[[3]]
 df[["b"]]
 
-
 # Outras formas de imprimir um vetor com elementos da terceira coluna
-{r}
 df$b
 df[,"b"]
 df[,3]
