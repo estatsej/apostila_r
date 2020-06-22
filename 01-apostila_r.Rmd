@@ -196,3 +196,76 @@ ml[,]
 -`diag(n)`: Sendo n um inteiro, retorna uma matriz identidade de ordem n
 -`eigen(A)`: Retorna os autovalores e autovetores de A
 
+### Array
+
+Um array é uma generalização de uma matriz, em que os dados podem ser distribuidos em n
+dimensões de tamanhos t<sub>i</sub>, i  E {1, 2, ..., n}. A sintaxe utilizada é dada abaixo, em que "dim"é um vetor de dimensão do array.
+
+`x <- array(data = dados,dim = c())`
+
+Exemplos:
+```{r}
+# Criando um array com dimensão de linhas e 5 colunas
+a <- array(data = c(1:10), dim = c(2,5))
+a
+
+
+# Criando um array de 3 dimensões
+b <- array(1:18, dim = c(2,3,3))
+b
+```
+
+*Selecionar um elemento do array*
+O acesso dos elementos de um array é análogo ao de matriz e vetor, diferenciando no fato de que
+são informados n campos, considerando que são n dimensõos.
+
+Exemplo:
+```{r}
+# Acessando um elemento do array b do exemplo anterior
+b[1,2,3]
+```
+
+### Lista
+
+Listas são estruturas genéricas e flexíveis que permitem armazenar diversos formatos em um único
+objeto.
+
+
+`list(elemento1, elemento2, elementon)`
+
+Exemplos: 
+```{r}
+# Criando vetores *s, **b*, e formando uma lista com esses vetores
+s <- c("aa", "bb", "cc", "dd", "ee")
+b <- c(TRUE, FALSE, TRUE, FALSE, FALSE)
+x <- list(s, b, 3)
+x
+```
+
+*Operações com membros da lista*
+
+Para opeçãoes com membros da lista utiliza-se a sintaxe `lista[]`. A seguir, alguns exemplos utilizando a lista criada no exemplo anterior:
+
+```{r}
+# Imprimindo o segundo membro da lista x:
+x[2]
+
+
+# Imprimindo o segundo e o terceiro membro da lista x
+
+x[c(2,3)]
+```
+
+
+*Operações com elementos dos membros da lista*
+
+Também pode-se realizar operações com elementos dentro de um membro da lista. Para isso, utiliza-se a seguinte sintaxe:
+
+`lista[[membro]][elemento]`
+
+Exemplos: 
+```{r}
+# Imprimindo o terceiro elemento do segundo membro da lista x
+
+x[[2]][3]
+```
