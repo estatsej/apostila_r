@@ -559,12 +559,12 @@ objeto.</p>
 </div>
 <div id="funções" class="section level2" number="1.5">
 <h2><span class="header-section-number">1.5</span> Funções</h2>
-<p>É possível escrever funções no R, funções são sequências de código definidas pelo usuário para executar uma sequência específica de comandos. A função é criada utilizando a função do R <code>function</code>:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>funcao &lt;-<span class="st"> </span><span class="cf">function</span>(argumento1, argumento2)</span>
+<p>Funções são sequências de código definidas pelo usuário para executar uma sequência específica de comandos. É possível escrever funções no R através da seguinte sintaxe:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>funcao &lt;-<span class="st"> </span><span class="cf">function</span>(argumento1, argumento2, ...)</span>
 <span id="cb64-2"><a href="#cb64-2"></a>{</span>
 <span id="cb64-3"><a href="#cb64-3"></a>  sequencia de código utilizando os argumentos</span>
 <span id="cb64-4"><a href="#cb64-4"></a>}</span></code></pre></div>
-<p><strong>Exemplos</strong></p>
+<p>Exemplos:</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="co"># Criando uma função para elevar um argumento x ao quadrado</span></span>
 <span id="cb65-2"><a href="#cb65-2"></a>fx &lt;-<span class="st"> </span><span class="cf">function</span>(x){x<span class="op">^</span><span class="dv">2</span>}</span>
 <span id="cb65-3"><a href="#cb65-3"></a><span class="kw">fx</span>(<span class="dv">2</span>)</span></code></pre></div>
@@ -583,16 +583,15 @@ objeto.</p>
 </div>
 <div id="funções-apply" class="section level2" number="1.6">
 <h2><span class="header-section-number">1.6</span> Funções Apply</h2>
-<p>Funções da família apply são funções feitas para se aplicar outras funções em diferentes tipos de estruturas de dados,
-a aplicação das funções nessas estruturas é feita ded forma iterativa sem a necessidade de usar loops (como <code>while</code> ou <code>for</code>).
+<p>Funções da família apply são utilizadas para se aplicar outras funções em diferentes tipos de estruturas de dados,
+a aplicação das funções nessas estruturas é feita de forma iterativa, sem a necessidade de usar loops (como <code>while</code> ou <code>for</code>).
 Diferentes funções apply são usadas para diferentes estruturas de dados.</p>
 <div id="apply" class="section level3" number="1.6.1">
 <h3><span class="header-section-number">1.6.1</span> Apply</h3>
-<p>A função <code>apply</code> é utilizada em matrizes, data frames ou arrays. A função retorna um vetor ou array dos valores obtidos aplicando a função argumento nos dados.
-A função é utilizada da seguinte forma:</p>
+<p>A função <code>apply</code> é utilizada em matrizes, –data frames– ou arrays. Ela retorna um vetor ou array dos valores obtidos aplicando a função argumento nos dados, sendo utilizada da seguinte forma:</p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="kw">apply</span>(X, Margem, Funcao)</span></code></pre></div>
-<p>Onde <code>X</code> representa os dados (array, matriz ou data.frame), <code>Margem</code> representa a margem que será utilizada na iteração, e <code>Funcao</code> representa a função a ser aplicada.</p>
-<p><strong>Exemplos</strong></p>
+<p>Onde <code>X</code> representa os dados (array, matriz ou data.frame), <code>Margem</code> representa a margem que será utilizada na iteração (sendo <code>1</code> para linha, <code>2</code> para coluna), e <code>Funcao</code> representa a função a ser aplicada.</p>
+<p>Exemplos:</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">4</span>, <span class="dv">4</span>) <span class="co"># Criando uma matriz 4x4</span></span>
 <span id="cb72-2"><a href="#cb72-2"></a>matriz <span class="co"># Visualizando a matriz</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
@@ -600,12 +599,14 @@ A função é utilizada da seguinte forma:</p>
 ## [2,]    2    6   10   14
 ## [3,]    3    7   11   15
 ## [4,]    4    8   12   16</code></pre>
-<p>Abaixo aplicamos a função sum (terceiro argumento) ao objeto matriz (primeiro argumento), na primeira marginal (segundo argumento), desta forma, a função <code>apply</code> retorna um vetor com as somas de cada linha da matriz.</p>
+<p>Abaixo aplicamos a função <code>sum</code> (terceiro argumento) ao objeto <code>matriz</code> (primeiro argumento), na primeira marginal (segundo argumento), desta forma, a função <code>apply</code> retorna um vetor com as somas de cada linha da matriz.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="kw">apply</span>(matriz, <span class="dv">1</span>, sum)</span></code></pre></div>
 <pre><code>## [1] 28 32 36 40</code></pre>
 <p>Abaixo, usamos o segundo argumento como <code>2</code>, assim, a função retorna um vetor com as somas das colunas da matriz.</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="kw">apply</span>(matriz, <span class="dv">2</span>, sum)</span></code></pre></div>
 <pre><code>## [1] 10 26 42 58</code></pre>
+<p>Também é possível utilizar funções criadas por usuários ou funções de outros pacotes.</p>
+<p>Exemplo:</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="kw">apply</span>(matriz, <span class="dv">1</span>, <span class="cf">function</span>(x){x<span class="op">^</span><span class="dv">2</span><span class="fl">+0.5</span>})</span></code></pre></div>
 <pre><code>##       [,1]  [,2]  [,3]  [,4]
 ## [1,]   1.5   4.5   9.5  16.5
@@ -618,21 +619,23 @@ A função é utilizada da seguinte forma:</p>
 <p>A função <code>tapply</code> funciona da mesma forma que a função <code>apply</code>, mas podendo usar uma variável como indice de marginal.
 A função é utilizada da seguinte forma:</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="kw">tapply</span>(X, Indice, Funcao)</span></code></pre></div>
-<p><strong>Exemplos</strong></p>
+<p>Exemplo:</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sexo =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
 <span id="cb81-2"><a href="#cb81-2"></a>                               <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">11</span>)),</span>
 <span id="cb81-3"><a href="#cb81-3"></a>                    <span class="dt">idade =</span> <span class="kw">c</span>(<span class="dv">79</span>, <span class="dv">2</span>, <span class="dv">95</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">73</span>, <span class="dv">82</span>, <span class="dv">23</span>, <span class="dv">6</span>, <span class="dv">19</span>,</span>
 <span id="cb81-4"><a href="#cb81-4"></a>                              <span class="dv">43</span>, <span class="dv">39</span>, <span class="dv">9</span>, <span class="dv">88</span>, <span class="dv">89</span>, <span class="dv">41</span>, <span class="dv">4</span>, <span class="dv">13</span>, <span class="dv">92</span>, <span class="dv">33</span>))</span>
-<span id="cb81-5"><a href="#cb81-5"></a><span class="kw">tapply</span>(dados<span class="op">$</span>idade, dados<span class="op">$</span>sexo, mean)</span></code></pre></div>
+<span id="cb81-5"><a href="#cb81-5"></a></span>
+<span id="cb81-6"><a href="#cb81-6"></a><span class="co"># Calculando a méria da idade de acordo com sexo</span></span>
+<span id="cb81-7"><a href="#cb81-7"></a><span class="kw">tapply</span>(dados<span class="op">$</span>idade, dados<span class="op">$</span>sexo, mean)</span></code></pre></div>
 <pre><code>##        F        M 
 ## 42.72727 45.22222</code></pre>
 </div>
 <div id="sapply" class="section level3" number="1.6.3">
 <h3><span class="header-section-number">1.6.3</span> Sapply</h3>
-<p>A função <code>sapply</code> é utilizada para aplicar funções em cada elemento de um objeto de tipo lista. A função é utilizada da seguinte forma:</p>
+<p>A função <code>sapply</code> é utilizada para aplicar funções em cada elemento de um objeto de tipo lista, utilizando a seguinte sintaxe:</p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="kw">sapply</span>(X, Funcao)</span></code></pre></div>
 <p>Onde <code>X</code> representa os dados (de tipo lista) e <code>Funcao</code> representa a função a ser aplicada em cada elemento dessa lista.</p>
-<p><strong>Exemplos</strong></p>
+<p>Exemplo:</p>
 <p>Abaixo a função sapply retorna um vetor de comprimento <code>3</code>, onde cada elemento representa o resultado da função <code>mean</code> de cada elemento da lista.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="co"># Criado um vetor de sequencia de 1 a 10</span></span>
 <span id="cb84-2"><a href="#cb84-2"></a>y &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">:</span><span class="dv">14</span> <span class="co"># Criado um vetor de sequencia de 2 a 14</span></span>
@@ -645,10 +648,10 @@ A função é utilizada da seguinte forma:</p>
 </div>
 <div id="lapply" class="section level3" number="1.6.4">
 <h3><span class="header-section-number">1.6.4</span> Lapply</h3>
-<p>A função <code>lapply</code> funciona da mesma forma que <code>sapply</code>, com as diferença que é retornado uma lista ao invés de um vetor dos resultados. A função é utilizada da seguinte forma:</p>
+<p>A função <code>lapply</code> funciona da mesma forma que <code>sapply</code>, porém, é retornado uma lista ao invés de um vetor dos resultados. A função é utilizada da seguinte forma:</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="kw">lapply</span>(X, Funcao)</span></code></pre></div>
 <p>Onde <code>X</code> representa os dados (de tipo lista) e <code>Funcao</code> representa a função a ser aplicada em cada elemento dessa lista.</p>
-<p><strong>Exemplos</strong></p>
+<p>Exemplo:</p>
 <p>Abaixo a função lapply retorna uma lista de comprimento <code>3</code>, onde cada elemento representa o resultado da função <code>mean</code> de cada elemento da lista.</p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="co"># Criado um vetor de sequencia de 1 a 10</span></span>
 <span id="cb87-2"><a href="#cb87-2"></a>y &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">:</span><span class="dv">14</span> <span class="co"># Criado um vetor de sequencia de 2 a 14</span></span>
