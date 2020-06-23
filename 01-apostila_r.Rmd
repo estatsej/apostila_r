@@ -597,9 +597,9 @@ Para carregar bancos de dados externos, primeiro é necessário definir qual ser
 No Windows, para encontrar o "caminho" da pasta que desja, basta clicar no local indicado na figura a seguir:
 
 ```{r, echo = F}
-knitr::include_graphics("img/1.png")
+knitr::include_graphics("img/guia1.png")
 
-knitr::include_graphics("img/2.png")
+knitr::include_graphics("img/guia2.png")
 ```
 
 Para verificar qual o local que está definido como pasta de trabalho, utiliza-se a função `getwd()`.
