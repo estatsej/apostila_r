@@ -564,3 +564,125 @@ lista <- list(x,y,z) # Criando uma lista com os objetos anteriores
 
 lapply(lista, mean) 
 ```
+## Pacotes
+
+Como o R é **opensource**, a comunidade pode desenvolver e implementar novas funcionalidades que não estão presentes no pacote básico do R, chamadas de pacotes.
+
+Os pacotes podem ser disponibilizados online e baixados pelos usuários dentro do programa, através da função `install.packages("nome do pacote")`.
+
+Após baixar o pacote, é necessário carregá-lo para poder utilizar suas funcionalidades. Para isso, pode-se utilizar duas sintaxes:
+
+`library(nome do pacote)` ou `require(nome do pacote)`
+
+*Observação:* Para baixar o pacote é necessário que o nome esteja entre aspas, o que não é preciso para carregá-lo.
+
+Exemplo:
+
+```{r, eval = FALSE}
+#baixando e carregando o pacote gráfico ggplot2
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+## Entrada de Dados
+
+No que se refere à leitura de dados, existem meios para a leitura de bancos de dados externos, bem como carregar bancos disponíveis no próprio R.
+
+Para carregar bancos de dados externos, primeiro é necessário definir qual será o local (pasta) de trabalho. Para isso, usa-se:
+
+`setwd("C:\\Usuário\\Local")`
+
+*Observação:* Note que é preciso utilizar aspas para indicar o local e também barras duplas (`\\`) ou barras invertidas (/) para separação.
+
+No Windows, para encontrar o "caminho" da pasta que desja, basta clicar no local indicado na figura a seguir:
+
+```{r, echo = F}
+knitr::include_graphics("img/1.png")
+
+knitr::include_graphics("img/2.png")
+```
+
+Para verificar qual o local que está definido como pasta de trabalho, utiliza-se a função `getwd()`.
+
+### .csv ou .txt
+
+Para ler arquivos do tipo `.csv`(excel) ou `.txt`, pode-se utilizar a função `read.table("dados.csv, ...)`, se atentando para os seguintes detalhes dentro da função:
+
+- `header`: indica se há ou não cabeçalho dentro do banco de dados
+- `sep`: indica qual o separador entre as células do banco (indicada entre aspas)
+- `dec`: indica qual o indicador decimal das unidades numéricas do banco (indicada entre aspas)
+
+A seguir, vamos ler o banco de dados `notas.txt` como exemplo:
+
+```{r, echo = F}
+knitr::include_graphics("img/notas.png")
+```
+
+Após definir o local de trabalho, verifica-se que o banco de dados possui cabeçalho, está com os elementos separados por vírgulas, e usa como separador decimal o ponto, com isso, temos:
+
+```{r}
+notas <- read.table("notas.txt", header = T, sep = ",", dec = ".")
+notas
+
+```
+
+*Observação:* Para arquivos `.csv`, geralmente são utilizados dois separadores: `,` e `;`.
+
+*Observação:* Para a melhor leitura de arquivos do excel do tipo `.xls` ou `.xlsx` é necessário o uso de pacotes.
+
+### Leitura de dados da internet
+
+Também é possível ler arquivos da Web, indicando o endereço (URL) dentro da faunção.
+
+Exemplo:
+```{r}
+# lendo um banco de dados da Web sobre gatos dosméticos
+gatos <- read.table("https://vincentarelbundock.github.io/Rdatasets/csv/boot/catsM.csv", sep = ",", header = T)
+```
+
+
+### Base de dados do R
+
+O R base já vem com alguns bancos de dados que são usados para aprendizado ou exemplificação.
+
+Para ver todas as opções disponíveis utiliza-se a função `data()`.
+
+Para utilizá-los basta atribuirmos o nome do banco escolhido a algum objeto, ou usando pelo próprio nome no R.
+
+```{r}
+# lendo o banco de dados iris
+data(iris)
+```
+
+### Conferência dos dados
+
+É recomendável conferir a importação dos dados para evitar erros futuros na análise. Existem comandos utilizados para isso, tais como:
+
+- `head()`: imprime as primeiras observações de um banco de dados
+- `tail()`: imprime as últimas observações de um banco de dados
+- `View()`: mostra todo o banco de dados em outra janela
+- `str()`: imprime o tipo e dimensão de cada variável do banco de dados
+
+Exemplo:
+
+```{r}
+# mostrando as primeiras linhas do banco 'iris'
+head(iris)
+
+# mostrando as 3 primeiras linhas do banco 'iris'
+head(iris, 3)
+
+# mostrando as últimas linhas do banco 'gatos'
+tail(gatos)
+
+#mostrando as variáveis do banco 'gatos'
+str(gatos)
+```
+
+### Funções Adicionais
+
+É possível facilitar o acesso às colunas de uma base de dados, isto é, ao invés de utilizar o operador $ para acessar alguma coluna pode-se utilizar o seu próprio nome. Para fazer isso, utiliza-se o comando `attach(dados)`.
+
+Esse comando irá trazer para a memória do computador cada coluna como um objeto, logo não é recomendável fazer isso com tanta frequência e com uma quantidade grande de dados. Para desfazer esse anexo de dados na memória, usa-se `detach(dados)`.
+
+
