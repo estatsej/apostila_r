@@ -622,8 +622,11 @@ Após definir o local de trabalho, verifica-se que o banco de dados possui cabe�
 
 ```{r}
 notas <- read.table("notas.txt", header = T, sep = ",", dec = ".")
-notas
+```
 
+```{r, echo = F}
+notas <- read.table("data/notas.txt", header = T, sep = ",", dec = ".")
+notas
 ```
 
 *Observação:* Para arquivos `.csv`, geralmente são utilizados dois separadores: `,` e `;`.
