@@ -620,10 +620,6 @@ knitr::include_graphics("img/notas.png")
 
 Após definir o local de trabalho, verifica-se que o banco de dados possui cabeçalho, está com os elementos separados por vírgulas, e usa como separador decimal o ponto, com isso, temos:
 
-```{r}
-notas <- read.table("notas.txt", header = T, sep = ",", dec = ".")
-```
-
 ```{r, echo = F}
 notas <- read.table("data/notas.txt", header = T, sep = ",", dec = ".")
 notas
