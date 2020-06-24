@@ -1,0 +1,6 @@
+aluno,nota
+mariana,7.4
+vitor,5.1
+samuel,10
+larissa,8.8
+ricardo,4.9
