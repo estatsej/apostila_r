@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Estatística Básica | Uma Breve Introdução ao R</title>
-  <meta name="description" content="2 Estatística Básica | Uma Breve Introdução ao R" />
+  <title>3 Gráficos | Uma Breve Introdução ao R</title>
+  <meta name="description" content="3 Gráficos | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Estatística Básica | Uma Breve Introdução ao R" />
+  <meta property="og:title" content="3 Gráficos | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Estatística Básica | Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="3 Gráficos | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="princípios-básicos.html"/>
-<link rel="next" href="gráficos.html"/>
+<link rel="prev" href="estatística-básica.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -232,148 +232,114 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="estatística-básica" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Estatística Básica</h1>
-<div id="medida-de-posição" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Medida de posição</h2>
-<p>As medidas descritivas são úteis para a representação dos dados a serem trabalhados e normalmente precedem qualquer análise estatística.</p>
-<div id="média" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Média</h3>
-<p>Para se calcular a média de um conjunto de dados utiliza-se a função <code>mean()</code>.</p>
-<p>Exemplo :</p>
-<pre><code>{r}
-x &lt;- 1:11
-mean(x)</code></pre>
+<div id="gráficos" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Gráficos</h1>
+<div id="gráficos-para-variáveis-qualitativas" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Gráficos para variáveis qualitativas</h2>
+<div id="gráficos-de-barras" class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Gráficos de Barras</h3>
+<p>Para criar gráficos de barras no <code>R</code>, podemos utilizar a seguinte sintaxe <code>barplot(dados)</code>.</p>
+<p>Lembrando que o argumento <code>dados</code>, deve ser um objeto de tipo vetor ou matriz.</p>
+<p>É recomendado utilizar a função <code>table</code> ao gerar vetores para gerar gráficos de barras.</p>
+<p>No exemplo abaixo, são criadas 10 barras não nomeadas com valores de 1 a 10.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="gráficos.html#cb166-1" aria-hidden="true"></a><span class="kw">barplot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/exemplo_barras_1-1.png" width="672" /></p>
+<p>No exemplo abaixo, é utilizado um vetor com elementos nomeados (<code>a</code> e <code>b</code>), quando geramos um vetor com a função <code>table</code> temos o mesmo resultado, e com isso as barras no gráfico também são nomeadas.</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="gráficos.html#cb167-1" aria-hidden="true"></a><span class="kw">barplot</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/exemplo_barras_2-1.png" width="672" /></p>
+<p>É importante lembrar que isso não se aplica a objetos de tipo lista, como no código abaixo.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="gráficos.html#cb168-1" aria-hidden="true"></a><span class="kw">barplot</span>(<span class="kw">list</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
+<p>No exemplo abaixo, vemos como objetos de tipo matriz podem ser usados dentro da função <code>barplot</code>.</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="gráficos.html#cb169-1" aria-hidden="true"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;n1&quot;</span>, <span class="st">&quot;n2&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)))</span>
+<span id="cb169-2"><a href="gráficos.html#cb169-2" aria-hidden="true"></a>matriz</span></code></pre></div>
+<pre><code>##    a b
+## n1 2 7
+## n2 5 2</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="gráficos.html#cb171-1" aria-hidden="true"></a><span class="kw">barplot</span>(matriz)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/exemplo_barras_4.2-1.png" width="672" /></p>
+<p>Abaixo, vemos como tabelas podem ser usadas para gerar o gráfico de barras.</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="gráficos.html#cb172-1" aria-hidden="true"></a>tabela &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;b&quot;</span>, <span class="dv">4</span>)))</span>
+<span id="cb172-2"><a href="gráficos.html#cb172-2" aria-hidden="true"></a>tabela</span></code></pre></div>
+<pre><code>## 
+## a b 
+## 2 4</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="gráficos.html#cb174-1" aria-hidden="true"></a><span class="kw">barplot</span>(tabela)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>Também é possível utilizar a função <code>barplot</code> para gerar um gráfico de colunas horizontais com o argumento <code>horiz = TRUE</code>.</p>
+<p>Abaixo, vemos também a função <code>table</code> sendo usada em conjunto com <code>data.frame</code>’s.</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="gráficos.html#cb175-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">5</span>), <span class="kw">rep</span>(<span class="st">&quot;b&quot;</span>, <span class="dv">7</span>),</span>
+<span id="cb175-2"><a href="gráficos.html#cb175-2" aria-hidden="true"></a>                              <span class="kw">rep</span>(<span class="st">&quot;c&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;d&quot;</span>, <span class="dv">8</span>)))</span>
+<span id="cb175-3"><a href="gráficos.html#cb175-3" aria-hidden="true"></a>dados</span></code></pre></div>
+<pre><code>##    letra
+## 1      a
+## 2      a
+## 3      a
+## 4      a
+## 5      a
+## 6      b
+## 7      b
+## 8      b
+## 9      b
+## 10     b
+## 11     b
+## 12     b
+## 13     c
+## 14     c
+## 15     d
+## 16     d
+## 17     d
+## 18     d
+## 19     d
+## 20     d
+## 21     d
+## 22     d</code></pre>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="gráficos.html#cb177-1" aria-hidden="true"></a><span class="kw">barplot</span>(<span class="kw">table</span>(dados<span class="op">$</span>letra), <span class="dt">horiz =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>Utilizando <code>data.frame</code>’s, podemos usar outra coluna para nomear nossas colunas utilizando o argumento <code>names.arg</code>.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="gráficos.html#cb178-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>), <span class="dt">numero =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>))</span>
+<span id="cb178-2"><a href="gráficos.html#cb178-2" aria-hidden="true"></a>dados</span></code></pre></div>
+<pre><code>##   letra numero
+## 1     a      5
+## 2     b      7
+## 3     c      2
+## 4     d      8</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="gráficos.html#cb180-1" aria-hidden="true"></a><span class="kw">barplot</span>(dados<span class="op">$</span>numero, <span class="dt">names.arg =</span> dados<span class="op">$</span>letra)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 </div>
-<div id="mediana" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Mediana</h3>
-<p>Para se calcular mediana de um conjunto de dados utiliza-se a função <code>median()</code>.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x &lt;- 11:20
-median(x)</code></pre>
-</div>
-<div id="mínimo-e-máximo" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Mínimo e máximo</h3>
-<p>Assim como quase tudo no R, existe mais de uma maneira de se calcular o mínimo e o máximo em um conjunto de dados. A primeira maneira é utilizando as funções <code>min()</code> e <code>max()</code>.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x &lt;- 1:100
-min(x)
+<div id="gráficos-de-setores" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Gráficos de Setores</h3>
+<p>Para criar gráficos de setores no <code>R</code>, podemos utilizar a seguinte sintaxe <code>pie(dados)</code>, onde <code>dados</code> é um vetor numérico.</p>
+<p>No exemplo abaixo, é criado um gráfico de 5 setores com valores de 1 a 5.</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="gráficos.html#cb181-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>No exemplo abaixo, é utilizado um vetor com elementos nomeados (<code>a</code> e <code>b</code>), quando geramos um vetor com a função <code>table</code> temos o mesmo resultado, e com isso os setores no gráfico também são nomeadas.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="gráficos.html#cb182-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p>É importante lembrar que isso não se aplica a objetos de tipo lista, como no código abaixo.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="gráficos.html#cb183-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">list</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
+<p>Da mesma forma que com gráficos de barras, podemos utilizar tabelas para gerar o gráfico de setores.</p>
+<p>No gráfico de setores também é possível modificar o raio do círculo com o argumento <code>radius</code>.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="gráficos.html#cb184-1" aria-hidden="true"></a>tabela &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;alpha&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;beta&quot;</span>, <span class="dv">4</span>)))</span>
+<span id="cb184-2"><a href="gráficos.html#cb184-2" aria-hidden="true"></a>tabela</span></code></pre></div>
+<pre><code>## 
+## alpha  beta 
+##     2     4</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="gráficos.html#cb186-1" aria-hidden="true"></a><span class="kw">pie</span>(tabela, <span class="dt">radius =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p>Também é possível utilizar <code>data.frame</code>’s para gerar o gráfico.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="gráficos.html#cb187-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;g&quot;</span>))</span>
+<span id="cb187-2"><a href="gráficos.html#cb187-2" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">table</span>(dados<span class="op">$</span>letra))</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>Com gráficos de barras, foi visto como nomear as colunas, no gráfico de setores, também é possível atribuir nomes aos setores utilizando o argumento <code>labels</code>.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="gráficos.html#cb188-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>), <span class="dt">numero =</span> <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">9</span>))</span>
+<span id="cb188-2"><a href="gráficos.html#cb188-2" aria-hidden="true"></a>dados</span></code></pre></div>
+<pre><code>##   letra numero
+## 1     f      6
+## 2     g      2
+## 3     h      9</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="gráficos.html#cb190-1" aria-hidden="true"></a><span class="kw">pie</span>(dados<span class="op">$</span>numero, <span class="dt">labels =</span> dados<span class="op">$</span>numero)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 
-max(x)</code></pre>
-<p>A outra forma é utilizando a função <code>range()</code>, mas neste caso o R retornará um vetor de 2 posições, sendo o mínimo representado pelo primeiro elemento e o máximo pelo segundo.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x &lt;- 1:100
-range(x)</code></pre>
-</div>
-<div id="quantis" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Quantis</h3>
-<p>Para se obter os quantis de um conjunto de dados utiliza-se a função <code>quantiles()</code>.</p>
-<p>É possível indicar quais são os quantis de interesse dentro da função. Por padrão, a função retorna os quantis de 0%, 25%, 50%, 75% e 100%, mas é possível achar os qualquer quantil de interesse em uma sequência de valores.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x &lt;- 1:11 + c(rep(1.2,4),rep(2.3,5),rep(4.3,2))
-quantile(x)
-
-quantile(x,c(.05,.95))</code></pre>
-</div>
-<div id="moda" class="section level3" number="2.1.5">
-<h3><span class="header-section-number">2.1.5</span> Moda</h3>
-<p>No R base não existe uma função específica para se calcular a moda, isto é, o valor mais frequente no conjunto. Então, uma sugestão para se verificar esse valor mais frequente é criar uma tabela de frequência através do comando <code>table()</code>, visto anteriormente, e investigar nessa tabela o valor que mais se repete.</p>
-<p><em>Observação 1</em>: Note que este método só é válido para dados de natureza quantitativa discreta.
-<em>Observação 2</em>: Utiliza-se a função <code>which.max()</code> para retornar a posição da tabela com o máximo da frequência.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x=c(2,1,2,2,1,4,4,5,2,6,5,3,2,4,1,6)
-tb=table(x)
-tb
-which.max(tb)</code></pre>
-</div>
-<div id="função-summary" class="section level3" number="2.1.6">
-<h3><span class="header-section-number">2.1.6</span> Função Summary</h3>
-<p>A função <code>summary()</code> é uma função genérica dentro do R que, quando a aplicada a objetos da classe de vetor numérico, retorna algumas medidas de posição.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x=c(1.3,1.5,1.3,1.7,1.9,2,1.4)
-summary(x)</code></pre>
-</div>
-</div>
-<div id="medidas-dispersao" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Medidas de Dispersão</h2>
-<div id="variância" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Variância</h3>
-<p>Uma medida muito importante para se entender o comportamento dos dados é a variância, calculada através da fórmula <code>var(dados)</code>.</p>
-<p>Exemplo:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="estatística-básica.html#cb150-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="dv">7</span>, <span class="fl">5.4</span>, <span class="dv">10</span>)</span>
-<span id="cb150-2"><a href="estatística-básica.html#cb150-2" aria-hidden="true"></a><span class="kw">var</span>(x)</span></code></pre></div>
-<pre><code>## [1] 11.672</code></pre>
-</div>
-<div id="desvio-padrão" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Desvio Padrão</h3>
-<p>Sabendo que o desvio padrão é a raiz quadrada da variância, é possível achá-lo aplicando a função de raiz quadrada, vista nas sessões anteriores, na função de variância. A sintaxe fica da seguinte forma: <code>sqrt(var(x))</code>.</p>
-<p>Uma outra forma de se calcular o desvio padrão é utilizando a função <code>sd(dados)</code>.</p>
-<p>Exemplo:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="estatística-básica.html#cb152-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="dv">7</span>, <span class="fl">5.4</span>, <span class="dv">10</span>)</span>
-<span id="cb152-2"><a href="estatística-básica.html#cb152-2" aria-hidden="true"></a></span>
-<span id="cb152-3"><a href="estatística-básica.html#cb152-3" aria-hidden="true"></a><span class="co"># calculando o desvio padrão atráves da raiz da variância</span></span>
-<span id="cb152-4"><a href="estatística-básica.html#cb152-4" aria-hidden="true"></a><span class="kw">sqrt</span>(<span class="kw">var</span>(x))</span></code></pre></div>
-<pre><code>## [1] 3.416431</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="estatística-básica.html#cb154-1" aria-hidden="true"></a><span class="co"># calculando o desvio padrão através da função sd</span></span>
-<span id="cb154-2"><a href="estatística-básica.html#cb154-2" aria-hidden="true"></a><span class="kw">sd</span>(x)</span></code></pre></div>
-<pre><code>## [1] 3.416431</code></pre>
-</div>
-<div id="coeficiente-de-variação" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Coeficiente de Variação</h3>
-<p>Para se ter uma métrica da variabilidade relativa dos dados é interessante vermos o coeficiente de variação, dada pela divisão do desvio padrão pela média vezes 100. Escrevendo essa fórmula no R obtém-se a seguinte sintaxe:</p>
-<p><code>(sd(dados)/mean(dados)) *100</code></p>
-<p>Exemplo:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="estatística-básica.html#cb156-1" aria-hidden="true"></a><span class="co"># calculando o coeficiente de variação para o vetor anterior</span></span>
-<span id="cb156-2"><a href="estatística-básica.html#cb156-2" aria-hidden="true"></a>(<span class="kw">sd</span>(x)<span class="op">/</span><span class="kw">mean</span>(x)) <span class="op">*</span><span class="dv">100</span></span></code></pre></div>
-<pre><code>## [1] 63.50243</code></pre>
-</div>
-<div id="amplitude" class="section level3" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> Amplitude</h3>
-<p>Para se calcular a amplitude basta subtrair o valor mínimo do máximo presente no conjunto de dados.</p>
-<p>Exemplo:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="estatística-básica.html#cb158-1" aria-hidden="true"></a><span class="co"># calculando a amplitude do vetor anterior</span></span>
-<span id="cb158-2"><a href="estatística-básica.html#cb158-2" aria-hidden="true"></a>amp &lt;-<span class="st"> </span><span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)</span>
-<span id="cb158-3"><a href="estatística-básica.html#cb158-3" aria-hidden="true"></a>amp</span></code></pre></div>
-<pre><code>## [1] 9</code></pre>
-</div>
-</div>
-<div id="correlação" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Correlação</h2>
-<p>Quando tratamos de variáveis quantitativas, principalmente contínuas, é interessante ter uma medida explicativa a respeito da quantidade de variabilidade compartilhada entre duas variáveis. Essa medida é usualmente o coeficiente de correlação, um valor entre -1 e 1 que explica a força (proximidade de |1|) e direção (positiva ou negativa) da correlação.</p>
-<p>Há 3 abordagens diferentes para se calcular essa medida(Pearson, Kendall e Spearman). Em todos os casos, utiliza-se a função <code>cor()</code>.</p>
-<p><em>Observação:</em> Caso não seja especificado na função qual método será utilizado, é aplicado o método de pearson.</p>
-<div id="coeficiente-de-pearson" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Coeficiente de Pearson</h3>
-<p>Para se calcular o coeficiente de Pearson usa-se o comando <code>cor(..., method = "pearson")</code></p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="estatística-básica.html#cb160-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">7</span></span>
-<span id="cb160-2"><a href="estatística-básica.html#cb160-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb160-3"><a href="estatística-básica.html#cb160-3" aria-hidden="true"></a></span>
-<span id="cb160-4"><a href="estatística-básica.html#cb160-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] -0.2419215</code></pre>
-</div>
-<div id="coeficiente-de-kendall" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Coeficiente de Kendall</h3>
-<p>Para se calcular o coeficiente de Kendall usa-se o comando <code>cor(..., method = "kendall")</code></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="estatística-básica.html#cb162-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb162-2"><a href="estatística-básica.html#cb162-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb162-3"><a href="estatística-básica.html#cb162-3" aria-hidden="true"></a></span>
-<span id="cb162-4"><a href="estatística-básica.html#cb162-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] 0.04761905</code></pre>
-</div>
-<div id="coeficiente-de-spearman" class="section level3" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> Coeficiente de Spearman</h3>
-<p>Para se calcular o coeficiente de Spearman usa-se o comando <code>cor(..., method = "spearman")</code></p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="estatística-básica.html#cb164-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="dv">11</span><span class="op">:</span><span class="dv">20</span></span>
-<span id="cb164-2"><a href="estatística-básica.html#cb164-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="dv">20</span><span class="op">:</span><span class="dv">11</span></span>
-<span id="cb164-3"><a href="estatística-básica.html#cb164-3" aria-hidden="true"></a></span>
-<span id="cb164-4"><a href="estatística-básica.html#cb164-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] -1</code></pre>
 </div>
 </div>
 </div>
@@ -382,8 +348,8 @@ summary(x)</code></pre>
           </div>
         </div>
       </div>
-<a href="princípios-básicos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="gráficos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estatística-básica.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

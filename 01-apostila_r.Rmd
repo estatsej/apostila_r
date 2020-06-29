@@ -879,3 +879,133 @@ v2 <- 20:11
 
 cor(v1, v2, method = "spearman")
 ```
+
+# Gráficos
+
+## Gráficos para variáveis qualitativas
+
+### Gráficos de Barras
+
+Para criar gráficos de barras no `R`, podemos utilizar a seguinte sintaxe `barplot(dados)`.
+
+Lembrando que o argumento `dados`, deve ser um objeto de tipo vetor ou matriz.
+
+É recomendado utilizar a função `table` ao gerar vetores para gerar gráficos de barras.
+
+No exemplo abaixo, são criadas 10 barras não nomeadas com valores de 1 a 10.
+
+```{r, exemplo_barras_1}
+barplot(1:10)
+```
+
+No exemplo abaixo, é utilizado um vetor com elementos nomeados (`a` e `b`), quando geramos um vetor com a função `table` temos o mesmo resultado, e com isso as barras no gráfico também são nomeadas.
+
+```{r, exemplo_barras_2}
+barplot(c("a" = 2, "b" = 4))
+```
+
+É importante lembrar que isso não se aplica a objetos de tipo lista, como no código abaixo.
+
+```{r, exmplo_barras_3, eval = FALSE}
+barplot(list("a" = 2, "b" = 4))
+```
+
+No exemplo abaixo, vemos como objetos de tipo matriz podem ser usados dentro da função `barplot`.
+
+```{r, exemplo_barras_4.1}
+matriz <- matrix(c(2, 5, 7, 2), 2, dimnames = list(c("n1", "n2"), c("a", "b")))
+matriz
+```
+
+```{r, exemplo_barras_4.2}
+barplot(matriz)
+```
+
+Abaixo, vemos como tabelas podem ser usadas para gerar o gráfico de barras.
+
+```{r}
+tabela <- table(c(rep("a", 2), rep("b", 4)))
+tabela
+```
+
+```{r}
+barplot(tabela)
+```
+
+Também é possível utilizar a função `barplot` para gerar um gráfico de colunas horizontais com o argumento `horiz = TRUE`.
+
+Abaixo, vemos também a função `table` sendo usada em conjunto com `data.frame`'s.
+
+```{r}
+dados <- data.frame(letra = c(rep("a", 5), rep("b", 7),
+                              rep("c", 2), rep("d", 8)))
+dados
+```
+
+```{r}
+barplot(table(dados$letra), horiz = TRUE)
+```
+
+Utilizando `data.frame`'s, podemos usar outra coluna para nomear nossas colunas utilizando o argumento `names.arg`.
+
+```{r}
+dados <- data.frame(letra = c("a", "b", "c", "d"), numero = c(5, 7, 2, 8))
+dados
+```
+
+```{r}
+barplot(dados$numero, names.arg = dados$letra)
+```
+
+### Gráficos de Setores
+
+Para criar gráficos de setores no `R`, podemos utilizar a seguinte sintaxe `pie(dados)`, onde `dados` é um vetor numérico.
+
+No exemplo abaixo, é criado um gráfico de 5 setores com valores de 1 a 5.
+
+```{r}
+pie(1:5)
+```
+
+No exemplo abaixo, é utilizado um vetor com elementos nomeados (`a` e `b`), quando geramos um vetor com a função `table` temos o mesmo resultado, e com isso os setores no gráfico também são nomeadas.
+
+```{r}
+pie(c("a" = 2, "b" = 4))
+```
+
+É importante lembrar que isso não se aplica a objetos de tipo lista, como no código abaixo.
+
+```{r, eval = FALSE}
+pie(list("a" = 2, "b" = 4))
+```
+
+Da mesma forma que com gráficos de barras, podemos utilizar tabelas para gerar o gráfico de setores.
+
+No gráfico de setores também é possível modificar o raio do círculo com o argumento `radius`.
+
+```{r}
+tabela <- table(c(rep("alpha", 2), rep("beta", 4)))
+tabela
+```
+
+```{r}
+pie(tabela, radius = 0.8)
+```
+
+Também é possível utilizar `data.frame`'s para gerar o gráfico.
+
+```{r}
+dados <- data.frame(letra = c("f", "f", "f", "g", "g"))
+pie(table(dados$letra))
+```
+
+Com gráficos de barras, foi visto como nomear as colunas, no gráfico de setores, também é possível atribuir nomes aos setores utilizando o argumento `labels`.
+
+```{r}
+dados <- data.frame(letra = c("f", "g", "h"), numero = c(6, 2, 9))
+dados
+```
+
+```{r}
+pie(dados$numero, labels = dados$numero)
+```
