@@ -1,8 +1,6 @@
 ---
 title: "Uma Breve Introdução ao R"
 author: "Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi"
-output: pdf_document
-documentclass: book
 link-citations: yes
 site: bookdown::bookdown_site
 biblio-style: apalike
@@ -81,7 +79,7 @@ help(log)
 ```
 
 
-## Operações Básicas
+## Operações Básicas {#operacoes-basicas}
 
 No ambiente R, existem uma série de operações básicas que são muito usuais e de grande importância.
 Tais como:

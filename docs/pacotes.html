@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>1.7 Pacotes | Uma Breve Introdução ao R</title>
+  <meta name="description" content="1.7 Pacotes | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="1.7 Pacotes | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="1.7 Pacotes | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="funcoes-apply.html"/>
+<link rel="next" href="entrada-dados.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
-</div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="pacotes" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> Pacotes</h2>
+<p>Como o R é <strong>opensource</strong>, a comunidade pode desenvolver e implementar novas funcionalidades que não estão presentes no pacote básico do R, chamadas de pacotes.</p>
+<p>Os pacotes podem ser disponibilizados online e baixados pelos usuários dentro do programa, através da função <code>install.packages("nome do pacote")</code>.</p>
+<p>Após baixar o pacote, é necessário carregá-lo para poder utilizar suas funcionalidades. Para isso, pode-se utilizar duas sintaxes:</p>
+<p><code>library(nome do pacote)</code> ou <code>require(nome do pacote)</code></p>
+<p><em>Observação:</em> Para baixar o pacote é necessário que o nome esteja entre aspas, o que não é preciso para carregá-lo.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="pacotes.html#cb131-1" aria-hidden="true"></a><span class="co">#baixando e carregando o pacote gráfico ggplot2</span></span>
+<span id="cb131-2"><a href="pacotes.html#cb131-2" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb131-3"><a href="pacotes.html#cb131-3" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="funcoes-apply.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="entrada-dados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

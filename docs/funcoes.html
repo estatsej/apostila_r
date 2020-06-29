@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>1.5 Funções | Uma Breve Introdução ao R</title>
+  <meta name="description" content="1.5 Funções | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="1.5 Funções | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="1.5 Funções | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="tabelas.html"/>
+<link rel="next" href="funcoes-apply.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
-</div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="funcoes" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Funções</h2>
+<p>Funções são sequências de código definidas pelo usuário para executar uma sequência específica de comandos. É possível escrever funções no R através da seguinte sintaxe:</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="funcoes.html#cb106-1" aria-hidden="true"></a>funcao &lt;-<span class="st"> </span><span class="cf">function</span>(argumento1, argumento2, ...)</span>
+<span id="cb106-2"><a href="funcoes.html#cb106-2" aria-hidden="true"></a>{</span>
+<span id="cb106-3"><a href="funcoes.html#cb106-3" aria-hidden="true"></a>  sequencia de código utilizando os argumentos</span>
+<span id="cb106-4"><a href="funcoes.html#cb106-4" aria-hidden="true"></a>}</span></code></pre></div>
+<p>Exemplos:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="funcoes.html#cb107-1" aria-hidden="true"></a><span class="co"># Criando uma função para elevar um argumento x ao quadrado</span></span>
+<span id="cb107-2"><a href="funcoes.html#cb107-2" aria-hidden="true"></a>fx &lt;-<span class="st"> </span><span class="cf">function</span>(x){x<span class="op">^</span><span class="dv">2</span>}</span>
+<span id="cb107-3"><a href="funcoes.html#cb107-3" aria-hidden="true"></a><span class="kw">fx</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="funcoes.html#cb109-1" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="co"># Criando um vetor com a sequencia de 1 a 10</span></span>
+<span id="cb109-2"><a href="funcoes.html#cb109-2" aria-hidden="true"></a><span class="kw">fx</span>(y)</span></code></pre></div>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="funcoes.html#cb111-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, <span class="dt">nrow=</span><span class="dv">5</span>, <span class="dt">ncol=</span><span class="dv">3</span>) <span class="co"># Criando uma matriz 3x5</span></span>
+<span id="cb111-2"><a href="funcoes.html#cb111-2" aria-hidden="true"></a><span class="kw">fx</span>(x)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1   36  121
+## [2,]    4   49  144
+## [3,]    9   64  169
+## [4,]   16   81  196
+## [5,]   25  100  225</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tabelas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="funcoes-apply.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

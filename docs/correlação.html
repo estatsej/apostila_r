@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>2.3 Correlação | Uma Breve Introdução ao R</title>
+  <meta name="description" content="2.3 Correlação | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="2.3 Correlação | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="2.3 Correlação | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="medidas-dispersao.html"/>
 
-<link rel="next" href="primeiros-passos.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
+<div id="correlação" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Correlação</h2>
+<p>Quando tratamos de variáveis quantitativas, principalmente contínuas, é interessante ter uma medida explicativa a respeito da quantidade de variabilidade compartilhada entre duas variáveis. Essa medida é usualmente o coeficiente de correlação, um valor entre -1 e 1 que explica a força (proximidade de |1|) e direção (positiva ou negativa) da correlação.</p>
+<p>Há 3 abordagens diferentes para se calcular essa medida(Pearson, Kendall e Spearman). Em todos os casos, utiliza-se a função <code>cor()</code>.</p>
+<p><em>Observação:</em> Caso não seja especificado na função qual método será utilizado, é aplicado o método de pearson.</p>
+<div id="coeficiente-de-pearson" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Coeficiente de Pearson</h3>
+<p>Para se calcular o coeficiente de Pearson usa-se o comando <code>cor(..., method = "pearson")</code></p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="correlação.html#cb160-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb160-2"><a href="correlação.html#cb160-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb160-3"><a href="correlação.html#cb160-3" aria-hidden="true"></a></span>
+<span id="cb160-4"><a href="correlação.html#cb160-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 </div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="coeficiente-de-kendall" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Coeficiente de Kendall</h3>
+<p>Para se calcular o coeficiente de Kendall usa-se o comando <code>cor(..., method = "kendall")</code></p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="correlação.html#cb161-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb161-2"><a href="correlação.html#cb161-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb161-3"><a href="correlação.html#cb161-3" aria-hidden="true"></a></span>
+<span id="cb161-4"><a href="correlação.html#cb161-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
 </div>
+<div id="coeficiente-de-spearman" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> Coeficiente de Spearman</h3>
+<p>Para se calcular o coeficiente de Spearman usa-se o comando <code>cor(..., method = "spearman")</code></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="correlação.html#cb162-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb162-2"><a href="correlação.html#cb162-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
+<span id="cb162-3"><a href="correlação.html#cb162-3" aria-hidden="true"></a></span>
+<span id="cb162-4"><a href="correlação.html#cb162-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;Spearman&quot;</span>)</span></code></pre></div>
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
+<a href="medidas-dispersao.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

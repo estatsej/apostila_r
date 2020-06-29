@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>2.1 Medida de posição | Uma Breve Introdução ao R</title>
+  <meta name="description" content="2.1 Medida de posição | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="2.1 Medida de posição | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="2.1 Medida de posição | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="estatística-básica.html"/>
+<link rel="next" href="medidas-dispersao.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
+<div id="medida-de-posição" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Medida de posição</h2>
+<p>As medidas descritivas são úteis para a representação dos dados a serem trabalhados e normalmente precedem qualquer análise estatística.</p>
+<div id="média" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Média</h3>
+<p>Para se calcular a média de um conjunto de dados utiliza-se a função <code>mean()</code>.</p>
+<p>Exemplo :</p>
+<pre><code>{r}
+x &lt;- 1:11
+mean(x)</code></pre>
 </div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="mediana" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Mediana</h3>
+<p>Para se calcular mediana de um conjunto de dados utiliza-se a função <code>median()</code>.</p>
+<p>Exemplo:</p>
+<pre><code>{r}
+x &lt;- 11:20
+median(x)</code></pre>
+</div>
+<div id="mínimo-e-máximo" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Mínimo e máximo</h3>
+<p>Assim como quase tudo no R, existe mais de uma maneira de se calcular o mínimo e o máximo em um conjunto de dados. A primeira maneira é utilizando as funções <code>min()</code> e <code>max()</code>.</p>
+<p>Exemplo:</p>
+<pre><code>{r}
+x &lt;- 1:100
+min(x)
+
+max(x)</code></pre>
+<p>A outra forma é utilizando a função <code>range()</code>, mas neste caso o R retornará um vetor de 2 posições, sendo o mínimo representado pelo primeiro elemento e o máximo pelo segundo.</p>
+<p>Exemplo:</p>
+<pre><code>{r}
+x &lt;- 1:100
+range(x)</code></pre>
+</div>
+<div id="quantis" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Quantis</h3>
+<p>Para se obter os quantis de um conjunto de dados utiliza-se a função <code>quantiles()</code>.</p>
+<p>É possível indicar quais são os quantis de interesse dentro da função. Por padrão, a função retorna os quantis de 0%, 25%, 50%, 75% e 100%, mas é possível achar os qualquer quantil de interesse em uma sequência de valores.</p>
+<p>Exemplo:</p>
+<pre><code>{r}
+x &lt;- 1:11 + c(rep(1.2,4),rep(2.3,5),rep(4.3,2))
+quantile(x)
+
+quantile(x,c(.05,.95))</code></pre>
+</div>
+<div id="moda" class="section level3" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> Moda</h3>
+<p>No R base não existe uma função específica para se calcular a moda, isto é, o valor mais frequente no conjunto. Então, uma sugestão para se verificar esse valor mais frequente é criar uma tabela de frequência através do comando <code>table()</code>, visto anteriormente, e investigar nessa tabela o valor que mais se repete.</p>
+<p><em>Observação 1</em>: Note que este método só é válido para dados de natureza quantitativa discreta.
+<em>Observação 2</em>: Utiliza-se a função <code>which.max()</code> para retornar a posição da tabela com o máximo da frequência.</p>
+<p>Exemplo:</p>
+<pre><code>{r}
+x=c(2,1,2,2,1,4,4,5,2,6,5,3,2,4,1,6)
+tb=table(x)
+tb
+which.max(tb)</code></pre>
+</div>
+<div id="função-summary" class="section level3" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> Função Summary</h3>
+<p>A função <code>summary()</code> é uma função genérica dentro do R que, quando a aplicada a objetos da classe de vetor numérico, retorna algumas medidas de posição.</p>
+<p>Exemplo:</p>
+<pre><code>{r}
+x=c(1.3,1.5,1.3,1.7,1.9,2,1.4)
+summary(x)</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estatística-básica.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="medidas-dispersao.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,4 +1,4 @@
-## Estruturas Básicas
+## Estruturas Básicas {#estrututas-basicas}
 
 ### Vetor
 
@@ -361,7 +361,7 @@ df[c("linha2", "linha3"),]
 ```
 
 
-## Tabelas
+## Tabelas {#tabelas}
 
 Uma das formas de se visualizar facilmente os dados é por meio de tabelas, permitindo um olhar mais amplo e claro de um conjunto de informações.
 
@@ -424,7 +424,7 @@ prop.table(tabela, margin = 1)
 ```
 
 
-## Funções
+## Funções {#funcoes}
 
 Funções são sequências de código definidas pelo usuário para executar uma sequência específica de comandos. É possível escrever funções no R através da seguinte sintaxe:
 
@@ -453,7 +453,7 @@ x <- matrix(1:15, nrow=5, ncol=3) # Criando uma matriz 3x5
 fx(x)
 ```
 
-## Funções Apply
+## Funções Apply {#funcoes-apply}
 
 Funções da família apply são utilizadas para se aplicar outras funções em diferentes tipos de estruturas de dados,
 a aplicação das funções nessas estruturas é feita de forma iterativa, sem a necessidade de usar loops (como `while` ou `for`).
@@ -564,7 +564,8 @@ lista <- list(x,y,z) # Criando uma lista com os objetos anteriores
 
 lapply(lista, mean) 
 ```
-## Pacotes
+
+## Pacotes {#pacotes}
 
 Como o R é **opensource**, a comunidade pode desenvolver e implementar novas funcionalidades que não estão presentes no pacote básico do R, chamadas de pacotes.
 
@@ -584,7 +585,7 @@ install.packages("ggplot2")
 library(ggplot2)
 ```
 
-## Entrada de Dados
+## Entrada de Dados {#entrada-dados}
 
 No que se refere à leitura de dados, existem meios para a leitura de bancos de dados externos, bem como carregar bancos disponíveis no próprio R.
 
@@ -638,7 +639,6 @@ Exemplo:
 # lendo um banco de dados da Web sobre gatos dosméticos
 gatos <- read.table("https://vincentarelbundock.github.io/Rdatasets/csv/boot/catsM.csv", sep = ",", header = T)
 ```
-
 
 ### Base de dados do R
 
@@ -784,8 +784,7 @@ x=c(1.3,1.5,1.3,1.7,1.9,2,1.4)
 summary(x)
 ```
 
-
-## Medidas de Dispersão
+## Medidas de Dispersão {#medidas-dispersao}
 
 ### Variância
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>2.2 Medidas de Dispersão | Uma Breve Introdução ao R</title>
+  <meta name="description" content="2.2 Medidas de Dispersão | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="2.2 Medidas de Dispersão | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="2.2 Medidas de Dispersão | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="medida-de-posição.html"/>
+<link rel="next" href="correlação.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
+<div id="medidas-dispersao" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Medidas de Dispersão</h2>
+<div id="variância" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Variância</h3>
+<p>Uma medida muito importante para se entender o comportamento dos dados é a variância, calculada através da fórmula <code>var(dados)</code>.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="medidas-dispersao.html#cb150-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="dv">7</span>, <span class="fl">5.4</span>, <span class="dv">10</span>)</span>
+<span id="cb150-2"><a href="medidas-dispersao.html#cb150-2" aria-hidden="true"></a><span class="kw">var</span>(x)</span></code></pre></div>
+<pre><code>## [1] 11.672</code></pre>
 </div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="desvio-padrão" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Desvio Padrão</h3>
+<p>Sabendo que o desvio padrão é a raiz quadrada da variância, é possível achá-lo aplicando a função de raiz quadrada, vista nas sessões anteriores, na função de variância. A sintaxe fica da seguinte forma: <code>sqrt(var(x))</code>.</p>
+<p>Uma outra forma de se calcular o desvio padrão é utilizando a função <code>sd(dados)</code>.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="medidas-dispersao.html#cb152-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="dv">7</span>, <span class="fl">5.4</span>, <span class="dv">10</span>)</span>
+<span id="cb152-2"><a href="medidas-dispersao.html#cb152-2" aria-hidden="true"></a></span>
+<span id="cb152-3"><a href="medidas-dispersao.html#cb152-3" aria-hidden="true"></a><span class="co"># calculando o desvio padrão atráves da raiz da variância</span></span>
+<span id="cb152-4"><a href="medidas-dispersao.html#cb152-4" aria-hidden="true"></a><span class="kw">sqrt</span>(<span class="kw">var</span>(x))</span></code></pre></div>
+<pre><code>## [1] 3.416431</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="medidas-dispersao.html#cb154-1" aria-hidden="true"></a><span class="co"># calculando o desvio padrão através da função sd</span></span>
+<span id="cb154-2"><a href="medidas-dispersao.html#cb154-2" aria-hidden="true"></a><span class="kw">sd</span>(x)</span></code></pre></div>
+<pre><code>## [1] 3.416431</code></pre>
+</div>
+<div id="coeficiente-de-variação" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Coeficiente de Variação</h3>
+<p>Para se ter uma métrica da variabilidade relativa dos dados é interessante vermos o coeficiente de variação, dada pela divisão do desvio padrão pela média vezes 100. Escrevendo essa fórmula no R obtém-se a seguinte sintaxe:</p>
+<p><code>(sd(dados)/mean(dados)) *100</code></p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="medidas-dispersao.html#cb156-1" aria-hidden="true"></a><span class="co"># calculando o coeficiente de variação para o vetor anterior</span></span>
+<span id="cb156-2"><a href="medidas-dispersao.html#cb156-2" aria-hidden="true"></a>(<span class="kw">sd</span>(x)<span class="op">/</span><span class="kw">mean</span>(x)) <span class="op">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## [1] 63.50243</code></pre>
+</div>
+<div id="amplitude" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Amplitude</h3>
+<p>Para se calcular a amplitude basta subtrair o valor mínimo do máximo presente no conjunto de dados.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="medidas-dispersao.html#cb158-1" aria-hidden="true"></a><span class="co"># calculando a amplitude do vetor anterior</span></span>
+<span id="cb158-2"><a href="medidas-dispersao.html#cb158-2" aria-hidden="true"></a>amp &lt;-<span class="st"> </span><span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)</span>
+<span id="cb158-3"><a href="medidas-dispersao.html#cb158-3" aria-hidden="true"></a>amp</span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="medida-de-posição.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="correlação.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

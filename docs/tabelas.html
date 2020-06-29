@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>1.4 Tabelas | Uma Breve Introdução ao R</title>
+  <meta name="description" content="1.4 Tabelas | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="1.4 Tabelas | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="1.4 Tabelas | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="estrututas-basicas.html"/>
+<link rel="next" href="funcoes.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
+<div id="tabelas" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Tabelas</h2>
+<p>Uma das formas de se visualizar facilmente os dados é por meio de tabelas, permitindo um olhar mais amplo e claro de um conjunto de informações.</p>
+<div id="tabelas-simples" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Tabelas Simples</h3>
+<p>Para criar uma tabela simples de uma variavel, utiliza-se a função <code>table(variavel)</code>.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="tabelas.html#cb96-1" aria-hidden="true"></a><span class="co"># criando uma tabela simples para a variavel &quot;sexo&quot;</span></span>
+<span id="cb96-2"><a href="tabelas.html#cb96-2" aria-hidden="true"></a>sexo &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>)</span>
+<span id="cb96-3"><a href="tabelas.html#cb96-3" aria-hidden="true"></a><span class="kw">table</span>(sexo)</span></code></pre></div>
+<pre><code>## sexo
+## F M 
+## 3 2</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="tabelas.html#cb98-1" aria-hidden="true"></a><span class="co"># criando uma tablea simples para a variavel &quot;turma&quot;</span></span>
+<span id="cb98-2"><a href="tabelas.html#cb98-2" aria-hidden="true"></a>turma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;B&quot;</span>, <span class="dv">3</span>))</span>
+<span id="cb98-3"><a href="tabelas.html#cb98-3" aria-hidden="true"></a><span class="kw">table</span>(turma)</span></code></pre></div>
+<pre><code>## turma
+## A B 
+## 2 3</code></pre>
 </div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="tabelas-de-contingência" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Tabelas de Contingência</h3>
+<p>Uma tabela de contingência é usada quando se deseja cruzar informações sobre duas variáveis.</p>
+<p>A sintaxe utilizada é semelhante à anterior: <code>table(variavel1, variavel2)</code></p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="tabelas.html#cb100-1" aria-hidden="true"></a><span class="co"># criando uma tabela de contingência para as variáveis &quot;sexo&quot; e &quot;turma&quot;</span></span>
+<span id="cb100-2"><a href="tabelas.html#cb100-2" aria-hidden="true"></a><span class="kw">table</span>(sexo, turma)</span></code></pre></div>
+<pre><code>##     turma
+## sexo A B
+##    F 2 1
+##    M 0 2</code></pre>
+<p><em>Observação:</em> Para criar uma tabela de contingência com duas variáveis é necessário que ambas tenham o mesmo número de elementos.</p>
+</div>
+<div id="tabelas-de-proporção" class="section level3" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Tabelas de Proporção</h3>
+<p>Quando é de interesse obter a frequência relativa das variáveis de uma tabela de contingência, utiliza-se a tabela de proporção, usando a seguinte sintaxe:</p>
+<p><code>prop.table(X = tabela, margin = ...)</code></p>
+<p><em>Observação:</em> Para utilizar a função acima, é necessário que a tabela de contingência da qual se deseja obter as frequências já tenha sido criada anteriormente e atribuida à um objeto.</p>
+<p>A opção <code>margin =</code> indica qual a marginal será utilizada na tabela, seguindo a seguinte ordem:</p>
+<ul>
+<li><code>NULL</code>: proporção total</li>
+<li><code>1</code>: proporção por linha</li>
+<li><code>2</code>: proporção por coluna</li>
+</ul>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="tabelas.html#cb102-1" aria-hidden="true"></a><span class="co">#atribuindo a tabela ao elemento &quot;tabela&quot;</span></span>
+<span id="cb102-2"><a href="tabelas.html#cb102-2" aria-hidden="true"></a>tabela &lt;-<span class="st"> </span><span class="kw">table</span>(sexo, turma)</span>
+<span id="cb102-3"><a href="tabelas.html#cb102-3" aria-hidden="true"></a></span>
+<span id="cb102-4"><a href="tabelas.html#cb102-4" aria-hidden="true"></a><span class="co"># calculando a proporção total para a tabela anterior</span></span>
+<span id="cb102-5"><a href="tabelas.html#cb102-5" aria-hidden="true"></a><span class="co"># prop.table(tabela) ou</span></span>
+<span id="cb102-6"><a href="tabelas.html#cb102-6" aria-hidden="true"></a><span class="kw">prop.table</span>(tabela, <span class="dt">margin =</span> <span class="ot">NULL</span>) </span></code></pre></div>
+<pre><code>##     turma
+## sexo   A   B
+##    F 0.4 0.2
+##    M 0.0 0.4</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="tabelas.html#cb104-1" aria-hidden="true"></a><span class="co"># calculando a proporção por linha</span></span>
+<span id="cb104-2"><a href="tabelas.html#cb104-2" aria-hidden="true"></a><span class="kw">prop.table</span>(tabela, <span class="dt">margin =</span> <span class="dv">1</span>) </span></code></pre></div>
+<pre><code>##     turma
+## sexo         A         B
+##    F 0.6666667 0.3333333
+##    M 0.0000000 1.0000000</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estrututas-basicas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="funcoes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

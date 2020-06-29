@@ -1,7 +1,9 @@
 bookdown::gitbook:
   css: style.css
+  split_by: section
   config:
     toc:
+      collapse: none
       before: |
         <li><a href="princípios-básicos.html">Introdução ao R</a></li>
       after: |
@@ -16,4 +18,3 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
-bookdown::epub_book: default

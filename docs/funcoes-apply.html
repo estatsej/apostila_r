@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>1.6 Funções Apply | Uma Breve Introdução ao R</title>
+  <meta name="description" content="1.6 Funções Apply | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="1.6 Funções Apply | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="1.6 Funções Apply | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="funcoes.html"/>
+<link rel="next" href="pacotes.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
+<div id="funcoes-apply" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> Funções Apply</h2>
+<p>Funções da família apply são utilizadas para se aplicar outras funções em diferentes tipos de estruturas de dados,
+a aplicação das funções nessas estruturas é feita de forma iterativa, sem a necessidade de usar loops (como <code>while</code> ou <code>for</code>).
+Diferentes funções apply são usadas para diferentes estruturas de dados.</p>
+<div id="apply" class="section level3" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Apply</h3>
+<p>A função <code>apply</code> é utilizada em matrizes, –data frames– ou arrays. Ela retorna um vetor ou array dos valores obtidos aplicando a função argumento nos dados, sendo utilizada da seguinte forma:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="funcoes-apply.html#cb113-1" aria-hidden="true"></a><span class="kw">apply</span>(X, Margem, Funcao)</span></code></pre></div>
+<p>Onde <code>X</code> representa os dados (array, matriz ou data.frame), <code>Margem</code> representa a margem que será utilizada na iteração (sendo <code>1</code> para linha, <code>2</code> para coluna), e <code>Funcao</code> representa a função a ser aplicada.</p>
+<p>Exemplos:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="funcoes-apply.html#cb114-1" aria-hidden="true"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">16</span>, <span class="dv">4</span>, <span class="dv">4</span>) <span class="co"># Criando uma matriz 4x4</span></span>
+<span id="cb114-2"><a href="funcoes-apply.html#cb114-2" aria-hidden="true"></a>matriz <span class="co"># Visualizando a matriz</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    5    9   13
+## [2,]    2    6   10   14
+## [3,]    3    7   11   15
+## [4,]    4    8   12   16</code></pre>
+<p>Abaixo aplicamos a função <code>sum</code> (terceiro argumento) ao objeto <code>matriz</code> (primeiro argumento), na primeira marginal (segundo argumento), desta forma, a função <code>apply</code> retorna um vetor com as somas de cada linha da matriz.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="funcoes-apply.html#cb116-1" aria-hidden="true"></a><span class="kw">apply</span>(matriz, <span class="dv">1</span>, sum)</span></code></pre></div>
+<pre><code>## [1] 28 32 36 40</code></pre>
+<p>Abaixo, usamos o segundo argumento como <code>2</code>, assim, a função retorna um vetor com as somas das colunas da matriz.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="funcoes-apply.html#cb118-1" aria-hidden="true"></a><span class="kw">apply</span>(matriz, <span class="dv">2</span>, sum)</span></code></pre></div>
+<pre><code>## [1] 10 26 42 58</code></pre>
+<p>Também é possível utilizar funções criadas por usuários ou funções de outros pacotes.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="funcoes-apply.html#cb120-1" aria-hidden="true"></a><span class="kw">apply</span>(matriz, <span class="dv">1</span>, <span class="cf">function</span>(x){x<span class="op">^</span><span class="dv">2</span><span class="fl">+0.5</span>})</span></code></pre></div>
+<pre><code>##       [,1]  [,2]  [,3]  [,4]
+## [1,]   1.5   4.5   9.5  16.5
+## [2,]  25.5  36.5  49.5  64.5
+## [3,]  81.5 100.5 121.5 144.5
+## [4,] 169.5 196.5 225.5 256.5</code></pre>
 </div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="tapply" class="section level3" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Tapply</h3>
+<p>A função <code>tapply</code> funciona da mesma forma que a função <code>apply</code>, mas podendo usar uma variável como indice de marginal.
+A função é utilizada da seguinte forma:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="funcoes-apply.html#cb122-1" aria-hidden="true"></a><span class="kw">tapply</span>(X, Indice, Funcao)</span></code></pre></div>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="funcoes-apply.html#cb123-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">sexo =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
+<span id="cb123-2"><a href="funcoes-apply.html#cb123-2" aria-hidden="true"></a>                               <span class="kw">c</span>(<span class="dv">9</span>, <span class="dv">11</span>)),</span>
+<span id="cb123-3"><a href="funcoes-apply.html#cb123-3" aria-hidden="true"></a>                    <span class="dt">idade =</span> <span class="kw">c</span>(<span class="dv">79</span>, <span class="dv">2</span>, <span class="dv">95</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">73</span>, <span class="dv">82</span>, <span class="dv">23</span>, <span class="dv">6</span>, <span class="dv">19</span>,</span>
+<span id="cb123-4"><a href="funcoes-apply.html#cb123-4" aria-hidden="true"></a>                              <span class="dv">43</span>, <span class="dv">39</span>, <span class="dv">9</span>, <span class="dv">88</span>, <span class="dv">89</span>, <span class="dv">41</span>, <span class="dv">4</span>, <span class="dv">13</span>, <span class="dv">92</span>, <span class="dv">33</span>))</span>
+<span id="cb123-5"><a href="funcoes-apply.html#cb123-5" aria-hidden="true"></a></span>
+<span id="cb123-6"><a href="funcoes-apply.html#cb123-6" aria-hidden="true"></a><span class="co"># Calculando a méria da idade de acordo com sexo</span></span>
+<span id="cb123-7"><a href="funcoes-apply.html#cb123-7" aria-hidden="true"></a><span class="kw">tapply</span>(dados<span class="op">$</span>idade, dados<span class="op">$</span>sexo, mean)</span></code></pre></div>
+<pre><code>##        F        M 
+## 42.72727 45.22222</code></pre>
+</div>
+<div id="sapply" class="section level3" number="1.6.3">
+<h3><span class="header-section-number">1.6.3</span> Sapply</h3>
+<p>A função <code>sapply</code> é utilizada para aplicar funções em cada elemento de um objeto de tipo lista, utilizando a seguinte sintaxe:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="funcoes-apply.html#cb125-1" aria-hidden="true"></a><span class="kw">sapply</span>(X, Funcao)</span></code></pre></div>
+<p>Onde <code>X</code> representa os dados (de tipo lista) e <code>Funcao</code> representa a função a ser aplicada em cada elemento dessa lista.</p>
+<p>Exemplo:</p>
+<p>Abaixo a função sapply retorna um vetor de comprimento <code>3</code>, onde cada elemento representa o resultado da função <code>mean</code> de cada elemento da lista.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="funcoes-apply.html#cb126-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="co"># Criado um vetor de sequencia de 1 a 10</span></span>
+<span id="cb126-2"><a href="funcoes-apply.html#cb126-2" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">:</span><span class="dv">14</span> <span class="co"># Criado um vetor de sequencia de 2 a 14</span></span>
+<span id="cb126-3"><a href="funcoes-apply.html#cb126-3" aria-hidden="true"></a>z &lt;-<span class="st"> </span><span class="dv">60</span><span class="op">:</span><span class="dv">90</span> <span class="co"># Criado um vetor de sequencia de 60 a 90</span></span>
+<span id="cb126-4"><a href="funcoes-apply.html#cb126-4" aria-hidden="true"></a></span>
+<span id="cb126-5"><a href="funcoes-apply.html#cb126-5" aria-hidden="true"></a>lista &lt;-<span class="st"> </span><span class="kw">list</span>(x,y,z) <span class="co"># Criando uma lista com os objetos anteriores</span></span>
+<span id="cb126-6"><a href="funcoes-apply.html#cb126-6" aria-hidden="true"></a></span>
+<span id="cb126-7"><a href="funcoes-apply.html#cb126-7" aria-hidden="true"></a><span class="kw">sapply</span>(lista, mean) </span></code></pre></div>
+<pre><code>## [1]  5.5  8.0 75.0</code></pre>
+</div>
+<div id="lapply" class="section level3" number="1.6.4">
+<h3><span class="header-section-number">1.6.4</span> Lapply</h3>
+<p>A função <code>lapply</code> funciona da mesma forma que <code>sapply</code>, porém, é retornado uma lista ao invés de um vetor dos resultados. A função é utilizada da seguinte forma:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="funcoes-apply.html#cb128-1" aria-hidden="true"></a><span class="kw">lapply</span>(X, Funcao)</span></code></pre></div>
+<p>Onde <code>X</code> representa os dados (de tipo lista) e <code>Funcao</code> representa a função a ser aplicada em cada elemento dessa lista.</p>
+<p>Exemplo:</p>
+<p>Abaixo a função lapply retorna uma lista de comprimento <code>3</code>, onde cada elemento representa o resultado da função <code>mean</code> de cada elemento da lista.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="funcoes-apply.html#cb129-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="co"># Criado um vetor de sequencia de 1 a 10</span></span>
+<span id="cb129-2"><a href="funcoes-apply.html#cb129-2" aria-hidden="true"></a>y &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">:</span><span class="dv">14</span> <span class="co"># Criado um vetor de sequencia de 2 a 14</span></span>
+<span id="cb129-3"><a href="funcoes-apply.html#cb129-3" aria-hidden="true"></a>z &lt;-<span class="st"> </span><span class="dv">60</span><span class="op">:</span><span class="dv">90</span> <span class="co"># Criado um vetor de sequencia de 60 a 90</span></span>
+<span id="cb129-4"><a href="funcoes-apply.html#cb129-4" aria-hidden="true"></a></span>
+<span id="cb129-5"><a href="funcoes-apply.html#cb129-5" aria-hidden="true"></a>lista &lt;-<span class="st"> </span><span class="kw">list</span>(x,y,z) <span class="co"># Criando uma lista com os objetos anteriores</span></span>
+<span id="cb129-6"><a href="funcoes-apply.html#cb129-6" aria-hidden="true"></a></span>
+<span id="cb129-7"><a href="funcoes-apply.html#cb129-7" aria-hidden="true"></a><span class="kw">lapply</span>(lista, mean) </span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 5.5
+## 
+## [[2]]
+## [1] 8
+## 
+## [[3]]
+## [1] 75</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="funcoes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pacotes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

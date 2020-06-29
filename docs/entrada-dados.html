@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>1.8 Entrada de Dados | Uma Breve Introdução ao R</title>
+  <meta name="description" content="1.8 Entrada de Dados | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="1.8 Entrada de Dados | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="1.8 Entrada de Dados | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="pacotes.html"/>
+<link rel="next" href="estatística-básica.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
+<div id="entrada-dados" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> Entrada de Dados</h2>
+<p>No que se refere à leitura de dados, existem meios para a leitura de bancos de dados externos, bem como carregar bancos disponíveis no próprio R.</p>
+<p>Para carregar bancos de dados externos, primeiro é necessário definir qual será o local (pasta) de trabalho. Para isso, usa-se:</p>
+<p><code>setwd("C:\\Usuário\\Local")</code></p>
+<p><em>Observação:</em> Note que é preciso utilizar aspas para indicar o local e também barras duplas (<code>\\</code>) ou barras invertidas (/) para separação.</p>
+<p>No Windows, para encontrar o “caminho” da pasta que desja, basta clicar no local indicado na figura a seguir:</p>
+<p><img src="img/guia1.png" width="472" /><img src="img/guia2.png" width="472" /></p>
+<p>Para verificar qual o local que está definido como pasta de trabalho, utiliza-se a função <code>getwd()</code>.</p>
+<div id="csv-ou-.txt" class="section level3" number="1.8.1">
+<h3><span class="header-section-number">1.8.1</span> .csv ou .txt</h3>
+<p>Para ler arquivos do tipo <code>.csv</code>(excel) ou <code>.txt</code>, pode-se utilizar a função <code>read.table("dados.csv, ...)</code>, se atentando para os seguintes detalhes dentro da função:</p>
+<ul>
+<li><code>header</code>: indica se há ou não cabeçalho dentro do banco de dados</li>
+<li><code>sep</code>: indica qual o separador entre as células do banco (indicada entre aspas)</li>
+<li><code>dec</code>: indica qual o indicador decimal das unidades numéricas do banco (indicada entre aspas)</li>
+</ul>
+<p>A seguir, vamos ler o banco de dados <code>notas.txt</code> como exemplo:</p>
+<p><img src="img/notas.png" width="271" /></p>
+<p>Após definir o local de trabalho, verifica-se que o banco de dados possui cabeçalho, está com os elementos separados por vírgulas, e usa como separador decimal o ponto, com isso, temos:</p>
+<pre><code>##     aluno nota
+## 1 mariana  7.4
+## 2   vitor  5.1
+## 3  samuel 10.0
+## 4 larissa  8.8
+## 5 ricardo  4.9</code></pre>
+<p><em>Observação:</em> Para arquivos <code>.csv</code>, geralmente são utilizados dois separadores: <code>,</code> e <code>;</code>.</p>
+<p><em>Observação:</em> Para a melhor leitura de arquivos do excel do tipo <code>.xls</code> ou <code>.xlsx</code> é necessário o uso de pacotes.</p>
 </div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="leitura-de-dados-da-internet" class="section level3" number="1.8.2">
+<h3><span class="header-section-number">1.8.2</span> Leitura de dados da internet</h3>
+<p>Também é possível ler arquivos da Web, indicando o endereço (URL) dentro da faunção.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="entrada-dados.html#cb133-1" aria-hidden="true"></a><span class="co"># lendo um banco de dados da Web sobre gatos dosméticos</span></span>
+<span id="cb133-2"><a href="entrada-dados.html#cb133-2" aria-hidden="true"></a>gatos &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://vincentarelbundock.github.io/Rdatasets/csv/boot/catsM.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> T)</span></code></pre></div>
 </div>
+<div id="base-de-dados-do-r" class="section level3" number="1.8.3">
+<h3><span class="header-section-number">1.8.3</span> Base de dados do R</h3>
+<p>O R base já vem com alguns bancos de dados que são usados para aprendizado ou exemplificação.</p>
+<p>Para ver todas as opções disponíveis utiliza-se a função <code>data()</code>.</p>
+<p>Para utilizá-los basta atribuirmos o nome do banco escolhido a algum objeto, ou usando pelo próprio nome no R.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="entrada-dados.html#cb134-1" aria-hidden="true"></a><span class="co"># lendo o banco de dados iris</span></span>
+<span id="cb134-2"><a href="entrada-dados.html#cb134-2" aria-hidden="true"></a><span class="kw">data</span>(iris)</span></code></pre></div>
+</div>
+<div id="conferência-dos-dados" class="section level3" number="1.8.4">
+<h3><span class="header-section-number">1.8.4</span> Conferência dos dados</h3>
+<p>É recomendável conferir a importação dos dados para evitar erros futuros na análise. Existem comandos utilizados para isso, tais como:</p>
+<ul>
+<li><code>head()</code>: imprime as primeiras observações de um banco de dados</li>
+<li><code>tail()</code>: imprime as últimas observações de um banco de dados</li>
+<li><code>View()</code>: mostra todo o banco de dados em outra janela</li>
+<li><code>str()</code>: imprime o tipo e dimensão de cada variável do banco de dados</li>
+</ul>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="entrada-dados.html#cb135-1" aria-hidden="true"></a><span class="co"># mostrando as primeiras linhas do banco &#39;iris&#39;</span></span>
+<span id="cb135-2"><a href="entrada-dados.html#cb135-2" aria-hidden="true"></a><span class="kw">head</span>(iris)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="entrada-dados.html#cb137-1" aria-hidden="true"></a><span class="co"># mostrando as 3 primeiras linhas do banco &#39;iris&#39;</span></span>
+<span id="cb137-2"><a href="entrada-dados.html#cb137-2" aria-hidden="true"></a><span class="kw">head</span>(iris, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="entrada-dados.html#cb139-1" aria-hidden="true"></a><span class="co"># mostrando as últimas linhas do banco &#39;gatos&#39;</span></span>
+<span id="cb139-2"><a href="entrada-dados.html#cb139-2" aria-hidden="true"></a><span class="kw">tail</span>(gatos)</span></code></pre></div>
+<pre><code>##     X Sex Bwt  Hwt
+## 92 92   M 3.6 15.0
+## 93 93   M 3.7 11.0
+## 94 94   M 3.8 14.8
+## 95 95   M 3.8 16.8
+## 96 96   M 3.9 14.4
+## 97 97   M 3.9 20.5</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="entrada-dados.html#cb141-1" aria-hidden="true"></a><span class="co">#mostrando as variáveis do banco &#39;gatos&#39;</span></span>
+<span id="cb141-2"><a href="entrada-dados.html#cb141-2" aria-hidden="true"></a><span class="kw">str</span>(gatos)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    97 obs. of  4 variables:
+##  $ X  : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Sex: chr  &quot;M&quot; &quot;M&quot; &quot;M&quot; &quot;M&quot; ...
+##  $ Bwt: num  2 2 2.1 2.2 2.2 2.2 2.2 2.2 2.2 2.2 ...
+##  $ Hwt: num  6.5 6.5 10.1 7.2 7.6 7.9 8.5 9.1 9.6 9.6 ...</code></pre>
+</div>
+<div id="funções-adicionais" class="section level3" number="1.8.5">
+<h3><span class="header-section-number">1.8.5</span> Funções Adicionais</h3>
+<p>É possível facilitar o acesso às colunas de uma base de dados, isto é, ao invés de utilizar o operador $ para acessar alguma coluna pode-se utilizar o seu próprio nome. Para fazer isso, utiliza-se o comando <code>attach(dados)</code>.</p>
+<p>Esse comando irá trazer para a memória do computador cada coluna como um objeto, logo não é recomendável fazer isso com tanta frequência e com uma quantidade grande de dados. Para desfazer esse anexo de dados na memória, usa-se <code>detach(dados)</code>.</p>
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="pacotes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estatística-básica.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

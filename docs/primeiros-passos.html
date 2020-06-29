@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Uma Breve Introdução ao R</title>
-  <meta name="description" content="Uma Breve Introdução ao R" />
+  <title>1.1 Primeiros Passos | Uma Breve Introdução ao R</title>
+  <meta name="description" content="1.1 Primeiros Passos | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Uma Breve Introdução ao R" />
+  <meta property="og:title" content="1.1 Primeiros Passos | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="1.1 Primeiros Passos | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="primeiros-passos.html"/>
+<link rel="prev" href="princípios-básicos.html"/>
+<link rel="next" href="operacoes-basicas.html"/>
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -224,20 +224,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Uma Breve Introdução ao R</h1>
-<p class="author"><em>Eduardo Lemos, Ricardo Masuda, Samuel Vianna, Vitor Landi</em></p>
+<div id="primeiros-passos" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Primeiros Passos</h2>
+<p>R é uma linguagem orientada à objetos que são armazenados na memória ativa do computador.
+Uma variável é um objeto que irá representar um valor ou expressão atribuído a ela. Só é possível
+armazenar um dado ou expressão pra cada variável, quando for atribuído mais de uma informação,
+o dado que estava antes armazenado será subscrito.</p>
+<div id="comandos-básicos" class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Comandos Básicos</h3>
+<p>Primeiramente, para a melhor utilização do R, é necessário saber alguns comandos básicos. São eles:</p>
+<ul>
+<li><code>control + L</code>: Limpar o console</li>
+<li><code>control + R</code> ou <code>control + enter</code>: Compilar o código escrito</li>
+<li><code>rm(list = ls())</code>: limpar memória</li>
+<li><code>#</code>: fazer comentários no código</li>
+</ul>
 </div>
-<div id="princípios-básicos" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Princípios Básicos</h1>
+<div id="atribuição-de-valores" class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Atribuição de Valores</h3>
+<p>Pode-se atribuir um valor à um objeto dentro do ambiente do R de duas formas diferentes: <code>&lt;-</code> e <code>=</code>.</p>
+<p>Exemplos:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="primeiros-passos.html#cb1-1" aria-hidden="true"></a><span class="co"># atribuindo o valor 10 para a variavel x</span></span>
+<span id="cb1-2"><a href="primeiros-passos.html#cb1-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb1-3"><a href="primeiros-passos.html#cb1-3" aria-hidden="true"></a>x</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="primeiros-passos.html#cb3-1" aria-hidden="true"></a><span class="co"># atribuindo o valor 5 para a variavel y</span></span>
+<span id="cb3-2"><a href="primeiros-passos.html#cb3-2" aria-hidden="true"></a>y =<span class="st"> </span><span class="dv">5</span></span>
+<span id="cb3-3"><a href="primeiros-passos.html#cb3-3" aria-hidden="true"></a>y</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p><strong>Observação</strong>: Vale ressaltar que o sinal de igual é usado para a atribuição de valores, e não denotar igualdade, para isso é usado dois sinais (<code>==</code>).</p>
+</div>
+<div id="tipos-de-variáveis" class="section level3" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Tipos de Variáveis</h3>
+<p>Toda variável declarada possui uma classe específica, de acordo com o seu conteúdo.</p>
+<p>Para verificar a classe de uma determinada variável, utiliza-se a função <code>class</code>.</p>
+<p>Exemplos:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="primeiros-passos.html#cb5-1" aria-hidden="true"></a><span class="co"># numérica</span></span>
+<span id="cb5-2"><a href="primeiros-passos.html#cb5-2" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="fl">1.5</span></span>
+<span id="cb5-3"><a href="primeiros-passos.html#cb5-3" aria-hidden="true"></a><span class="kw">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="primeiros-passos.html#cb7-1" aria-hidden="true"></a><span class="co"># caractere: palavras, textos, etc</span></span>
+<span id="cb7-2"><a href="primeiros-passos.html#cb7-2" aria-hidden="true"></a>y &lt;-<span class="st"> &quot;estatística&quot;</span></span>
+<span id="cb7-3"><a href="primeiros-passos.html#cb7-3" aria-hidden="true"></a><span class="kw">class</span>(y)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="primeiros-passos.html#cb9-1" aria-hidden="true"></a><span class="co"># lógico: TRUE, FALSE</span></span>
+<span id="cb9-2"><a href="primeiros-passos.html#cb9-2" aria-hidden="true"></a>z &lt;-<span class="st"> </span><span class="dv">4</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span></span>
+<span id="cb9-3"><a href="primeiros-passos.html#cb9-3" aria-hidden="true"></a><span class="kw">class</span>(z)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+</div>
+<div id="utilizando-ajuda-help" class="section level3" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Utilizando Ajuda (help)</h3>
+<p>Para buscar ajuda no R, pode-se usar a função <code>help()</code> ou o operador <code>?</code>.</p>
+<p>Exemplos:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="primeiros-passos.html#cb11-1" aria-hidden="true"></a><span class="co"># Buscando ajuda sobre a função log</span></span>
+<span id="cb11-2"><a href="primeiros-passos.html#cb11-2" aria-hidden="true"></a></span>
+<span id="cb11-3"><a href="primeiros-passos.html#cb11-3" aria-hidden="true"></a><span class="kw">help</span>(log)</span>
+<span id="cb11-4"><a href="primeiros-passos.html#cb11-4" aria-hidden="true"></a></span>
+<span id="cb11-5"><a href="primeiros-passos.html#cb11-5" aria-hidden="true"></a>?help</span></code></pre></div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="primeiros-passos.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="princípios-básicos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="operacoes-basicas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
