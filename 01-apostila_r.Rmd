@@ -851,7 +851,7 @@ Há 3 abordagens diferentes para se calcular essa medida(Pearson, Kendall e Spea
 
 Para se calcular o coeficiente de Pearson usa-se o comando `cor(..., method = "pearson")`
 
-```{r, eval = FALSE}
+```{r}
 v1 <- 1:7
 v2 <- c(2, 6, 7, 9, 3, 5, 1)
 
@@ -862,7 +862,7 @@ cor(v1, v2, method = "pearson")
 
 Para se calcular o coeficiente de Kendall usa-se o comando `cor(..., method = "kendall")`
 
-```{r, eval = FALSE}
+```{r}
 v1 <- c(1, 2, 3, 7, 9, 4, 6)
 v2 <- c(2, 6, 7, 9, 3, 5, 1)
 
@@ -873,7 +873,7 @@ cor(v1, v2, method = "kendall")
 
 Para se calcular o coeficiente de Spearman usa-se o comando `cor(..., method = "spearman")`
 
-```{r, eval = FALSE}
+```{r}
 v1 <- 11:20
 v2 <- 20:11
 
