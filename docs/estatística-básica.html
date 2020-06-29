@@ -347,22 +347,25 @@ summary(x)</code></pre>
 <span id="cb160-2"><a href="estatística-básica.html#cb160-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
 <span id="cb160-3"><a href="estatística-básica.html#cb160-3" aria-hidden="true"></a></span>
 <span id="cb160-4"><a href="estatística-básica.html#cb160-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] -0.2419215</code></pre>
 </div>
 <div id="coeficiente-de-kendall" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Coeficiente de Kendall</h3>
 <p>Para se calcular o coeficiente de Kendall usa-se o comando <code>cor(..., method = "kendall")</code></p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="estatística-básica.html#cb161-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb161-2"><a href="estatística-básica.html#cb161-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb161-3"><a href="estatística-básica.html#cb161-3" aria-hidden="true"></a></span>
-<span id="cb161-4"><a href="estatística-básica.html#cb161-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="estatística-básica.html#cb162-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb162-2"><a href="estatística-básica.html#cb162-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
+<span id="cb162-3"><a href="estatística-básica.html#cb162-3" aria-hidden="true"></a></span>
+<span id="cb162-4"><a href="estatística-básica.html#cb162-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.04761905</code></pre>
 </div>
 <div id="coeficiente-de-spearman" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Coeficiente de Spearman</h3>
 <p>Para se calcular o coeficiente de Spearman usa-se o comando <code>cor(..., method = "spearman")</code></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="estatística-básica.html#cb162-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="dv">11</span><span class="op">:</span><span class="dv">20</span></span>
-<span id="cb162-2"><a href="estatística-básica.html#cb162-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="dv">20</span><span class="op">:</span><span class="dv">11</span></span>
-<span id="cb162-3"><a href="estatística-básica.html#cb162-3" aria-hidden="true"></a></span>
-<span id="cb162-4"><a href="estatística-básica.html#cb162-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="estatística-básica.html#cb164-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="dv">11</span><span class="op">:</span><span class="dv">20</span></span>
+<span id="cb164-2"><a href="estatística-básica.html#cb164-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="dv">20</span><span class="op">:</span><span class="dv">11</span></span>
+<span id="cb164-3"><a href="estatística-básica.html#cb164-3" aria-hidden="true"></a></span>
+<span id="cb164-4"><a href="estatística-básica.html#cb164-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] -1</code></pre>
 
 </div>
 </div>
