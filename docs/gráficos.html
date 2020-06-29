@@ -249,27 +249,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="apostila_r_files/figure-html/exemplo_barras_2-1.png" width="672" /></p>
 <p>É importante lembrar que isso não se aplica a objetos de tipo lista, como no código abaixo.</p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="gráficos.html#cb168-1" aria-hidden="true"></a><span class="kw">barplot</span>(<span class="kw">list</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## Error in -0.01 * height: non-numeric argument to binary operator</code></pre>
 <p>No exemplo abaixo, vemos como objetos de tipo matriz podem ser usados dentro da função <code>barplot</code>.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="gráficos.html#cb169-1" aria-hidden="true"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;n1&quot;</span>, <span class="st">&quot;n2&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)))</span>
-<span id="cb169-2"><a href="gráficos.html#cb169-2" aria-hidden="true"></a>matriz</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="gráficos.html#cb170-1" aria-hidden="true"></a>matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>), <span class="dv">2</span>, <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;n1&quot;</span>, <span class="st">&quot;n2&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>)))</span>
+<span id="cb170-2"><a href="gráficos.html#cb170-2" aria-hidden="true"></a>matriz</span></code></pre></div>
 <pre><code>##    a b
 ## n1 2 7
 ## n2 5 2</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="gráficos.html#cb171-1" aria-hidden="true"></a><span class="kw">barplot</span>(matriz)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="gráficos.html#cb172-1" aria-hidden="true"></a><span class="kw">barplot</span>(matriz)</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/exemplo_barras_4.2-1.png" width="672" /></p>
 <p>Abaixo, vemos como tabelas podem ser usadas para gerar o gráfico de barras.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="gráficos.html#cb172-1" aria-hidden="true"></a>tabela &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;b&quot;</span>, <span class="dv">4</span>)))</span>
-<span id="cb172-2"><a href="gráficos.html#cb172-2" aria-hidden="true"></a>tabela</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="gráficos.html#cb173-1" aria-hidden="true"></a>tabela &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;b&quot;</span>, <span class="dv">4</span>)))</span>
+<span id="cb173-2"><a href="gráficos.html#cb173-2" aria-hidden="true"></a>tabela</span></code></pre></div>
 <pre><code>## 
 ## a b 
 ## 2 4</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="gráficos.html#cb174-1" aria-hidden="true"></a><span class="kw">barplot</span>(tabela)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="gráficos.html#cb175-1" aria-hidden="true"></a><span class="kw">barplot</span>(tabela)</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>Também é possível utilizar a função <code>barplot</code> para gerar um gráfico de colunas horizontais com o argumento <code>horiz = TRUE</code>.</p>
 <p>Abaixo, vemos também a função <code>table</code> sendo usada em conjunto com <code>data.frame</code>’s.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="gráficos.html#cb175-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">5</span>), <span class="kw">rep</span>(<span class="st">&quot;b&quot;</span>, <span class="dv">7</span>),</span>
-<span id="cb175-2"><a href="gráficos.html#cb175-2" aria-hidden="true"></a>                              <span class="kw">rep</span>(<span class="st">&quot;c&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;d&quot;</span>, <span class="dv">8</span>)))</span>
-<span id="cb175-3"><a href="gráficos.html#cb175-3" aria-hidden="true"></a>dados</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="gráficos.html#cb176-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="dv">5</span>), <span class="kw">rep</span>(<span class="st">&quot;b&quot;</span>, <span class="dv">7</span>),</span>
+<span id="cb176-2"><a href="gráficos.html#cb176-2" aria-hidden="true"></a>                              <span class="kw">rep</span>(<span class="st">&quot;c&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;d&quot;</span>, <span class="dv">8</span>)))</span>
+<span id="cb176-3"><a href="gráficos.html#cb176-3" aria-hidden="true"></a>dados</span></code></pre></div>
 <pre><code>##    letra
 ## 1      a
 ## 2      a
@@ -293,51 +294,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20     d
 ## 21     d
 ## 22     d</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="gráficos.html#cb177-1" aria-hidden="true"></a><span class="kw">barplot</span>(<span class="kw">table</span>(dados<span class="op">$</span>letra), <span class="dt">horiz =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="gráficos.html#cb178-1" aria-hidden="true"></a><span class="kw">barplot</span>(<span class="kw">table</span>(dados<span class="op">$</span>letra), <span class="dt">horiz =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>Utilizando <code>data.frame</code>’s, podemos usar outra coluna para nomear nossas colunas utilizando o argumento <code>names.arg</code>.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="gráficos.html#cb178-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>), <span class="dt">numero =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>))</span>
-<span id="cb178-2"><a href="gráficos.html#cb178-2" aria-hidden="true"></a>dados</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="gráficos.html#cb179-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>), <span class="dt">numero =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">8</span>))</span>
+<span id="cb179-2"><a href="gráficos.html#cb179-2" aria-hidden="true"></a>dados</span></code></pre></div>
 <pre><code>##   letra numero
 ## 1     a      5
 ## 2     b      7
 ## 3     c      2
 ## 4     d      8</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="gráficos.html#cb180-1" aria-hidden="true"></a><span class="kw">barplot</span>(dados<span class="op">$</span>numero, <span class="dt">names.arg =</span> dados<span class="op">$</span>letra)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="gráficos.html#cb181-1" aria-hidden="true"></a><span class="kw">barplot</span>(dados<span class="op">$</span>numero, <span class="dt">names.arg =</span> dados<span class="op">$</span>letra)</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
 </div>
 <div id="gráficos-de-setores" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Gráficos de Setores</h3>
 <p>Para criar gráficos de setores no <code>R</code>, podemos utilizar a seguinte sintaxe <code>pie(dados)</code>, onde <code>dados</code> é um vetor numérico.</p>
 <p>No exemplo abaixo, é criado um gráfico de 5 setores com valores de 1 a 5.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="gráficos.html#cb181-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="gráficos.html#cb182-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>No exemplo abaixo, é utilizado um vetor com elementos nomeados (<code>a</code> e <code>b</code>), quando geramos um vetor com a função <code>table</code> temos o mesmo resultado, e com isso os setores no gráfico também são nomeadas.</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="gráficos.html#cb182-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="gráficos.html#cb183-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <p>É importante lembrar que isso não se aplica a objetos de tipo lista, como no código abaixo.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="gráficos.html#cb183-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">list</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="gráficos.html#cb184-1" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">list</span>(<span class="st">&quot;a&quot;</span> =<span class="st"> </span><span class="dv">2</span>, <span class="st">&quot;b&quot;</span> =<span class="st"> </span><span class="dv">4</span>))</span></code></pre></div>
 <p>Da mesma forma que com gráficos de barras, podemos utilizar tabelas para gerar o gráfico de setores.</p>
 <p>No gráfico de setores também é possível modificar o raio do círculo com o argumento <code>radius</code>.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="gráficos.html#cb184-1" aria-hidden="true"></a>tabela &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;alpha&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;beta&quot;</span>, <span class="dv">4</span>)))</span>
-<span id="cb184-2"><a href="gráficos.html#cb184-2" aria-hidden="true"></a>tabela</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="gráficos.html#cb185-1" aria-hidden="true"></a>tabela &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;alpha&quot;</span>, <span class="dv">2</span>), <span class="kw">rep</span>(<span class="st">&quot;beta&quot;</span>, <span class="dv">4</span>)))</span>
+<span id="cb185-2"><a href="gráficos.html#cb185-2" aria-hidden="true"></a>tabela</span></code></pre></div>
 <pre><code>## 
 ## alpha  beta 
 ##     2     4</code></pre>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="gráficos.html#cb186-1" aria-hidden="true"></a><span class="kw">pie</span>(tabela, <span class="dt">radius =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="gráficos.html#cb187-1" aria-hidden="true"></a><span class="kw">pie</span>(tabela, <span class="dt">radius =</span> <span class="fl">0.8</span>)</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <p>Também é possível utilizar <code>data.frame</code>’s para gerar o gráfico.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="gráficos.html#cb187-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;g&quot;</span>))</span>
-<span id="cb187-2"><a href="gráficos.html#cb187-2" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">table</span>(dados<span class="op">$</span>letra))</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="gráficos.html#cb188-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;g&quot;</span>))</span>
+<span id="cb188-2"><a href="gráficos.html#cb188-2" aria-hidden="true"></a><span class="kw">pie</span>(<span class="kw">table</span>(dados<span class="op">$</span>letra))</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <p>Com gráficos de barras, foi visto como nomear as colunas, no gráfico de setores, também é possível atribuir nomes aos setores utilizando o argumento <code>labels</code>.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="gráficos.html#cb188-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>), <span class="dt">numero =</span> <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">9</span>))</span>
-<span id="cb188-2"><a href="gráficos.html#cb188-2" aria-hidden="true"></a>dados</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="gráficos.html#cb189-1" aria-hidden="true"></a>dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letra =</span> <span class="kw">c</span>(<span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>), <span class="dt">numero =</span> <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">9</span>))</span>
+<span id="cb189-2"><a href="gráficos.html#cb189-2" aria-hidden="true"></a>dados</span></code></pre></div>
 <pre><code>##   letra numero
 ## 1     f      6
 ## 2     g      2
 ## 3     h      9</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="gráficos.html#cb190-1" aria-hidden="true"></a><span class="kw">pie</span>(dados<span class="op">$</span>numero, <span class="dt">labels =</span> dados<span class="op">$</span>numero)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="gráficos.html#cb191-1" aria-hidden="true"></a><span class="kw">pie</span>(dados<span class="op">$</span>numero, <span class="dt">labels =</span> dados<span class="op">$</span>numero)</span></code></pre></div>
 <p><img src="apostila_r_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 
 </div>

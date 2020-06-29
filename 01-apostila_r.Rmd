@@ -906,7 +906,7 @@ barplot(c("a" = 2, "b" = 4))
 
 É importante lembrar que isso não se aplica a objetos de tipo lista, como no código abaixo.
 
-```{r, exmplo_barras_3, eval = FALSE}
+```{r, exmplo_barras_3, error = TRUE}
 barplot(list("a" = 2, "b" = 4))
 ```
 
