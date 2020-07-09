@@ -1010,7 +1010,91 @@ dados
 pie(dados$numero, labels = dados$numero)
 ```
 
-## parte do japa
+### Histograma
+
+A forma mais utilizada para se representar variáveis quantitativas contínuas é através do histograma.
+
+São dados os comandos abaixo para a construção de um histograma.
+
+`hist(variável)`
+
+Exemplo: 
+```{r}
+set.seed(123)
+dados <- rnorm(100)
+hist(dados)
+```
+
+
+### Polígono de frequência
+
+Para construirmos o polígono de frequência vamos utilizar outras funções gráficas: A função lines() sobrepõe o gráfico com alguma linha, para a qual daremos as coordenadas x e y. No caso x são os pontos médios do histograma e y é a frequência absoluta.
+
+```{r}
+set.seed(123)
+dados <- rnorm(100)
+histograma <- hist(dados)
+lines(x=c(histograma$breaks[1], histograma$mids, histograma$breaks[length(histograma$breaks)]),
+      y=c(0, histograma$counts,0), col = 2, lwd = 3)
+```
+
+
+Note que atribuímos o histograma a um objeto para conseguir acessar as informações mids (pontos médios) , counts (frequência absoluta) e breaks (intervalos de classe).
+
+*OBS:* Um polígono de frequência deve começar na primeira classe e terminar na última, portando o X está variando do primeiro elemento do vetor `histogram$breaks` até o último elemento desse mesmo vetor.
+O argumento col= informa a cor e lwd= informa a espessura da linha.
+
+
+### Gráfico de bastões (hastes)
+
+Para se representar variáveis de natureza quantitativa discreta é comum utilizarmos o gráfico de bastões ou hastes. Para fazê-lo basta utilizar a função genérica `plot()` nos dados em forma de tabela e ajustar alguns argumentos.
+
+Exemplo: 
+```{r teste1}
+set.seed(123)
+dados <- sample(c("a", "b", "c"), 100, TRUE)
+tabela <- table(dados)
+plot(tabela, type = "h", lwd = 3)
+```
+
+A opção type= informa o tipo de gráfico que queremos. Nesse caso, h é o tipo bastão. Entraremos em mais detalhes sobre isso em breve.
+
+
+### Gráfico de Dispersão
+
+Quando tratamos de duas variáveis quantitativas é interessante observar o comportamento conjunto entre elas. A maneira mais usual para se verificar esse comportamento é o gráfico de dispersão. Para construirmos esse gráfico basta utilizarmos a função genérica plot() do R, dessa forma o comando fica:
+
+`plot(variável1, variável2)`
+
+Exemplo
+
+```{r}
+set.seed(123)
+dados <- rnorm(100)
+dados1 <- rnorm(100)
+plot(dados, dados1)
+```
+
+### Gráfico de caixas (Box-plot)
+
+Quando tratamos de variáveis quantitativas é interessante observar, a distribuição dos dados de um modo geral. Uma forma de se verificar isso é pelo gráfico de Caixas, em que conseguimos visualizar os quartis, mediana, limites superior e inferior e outliers.
+
+Para construirmos esse gráfico basta utilizarmos a função:
+
+`boxplot(variável)`
+
+Exemplos:
+
+```{r}
+set.seed(123)
+dados <- data.frame(a = rnorm(100), b = sample(c("a", "b"), 100, TRUE))
+
+boxplot(dados$a)
+
+# Criando um Box-plot para a variável altura conforme a variável Sexo.
+
+boxplot(dados$a~dados$b)
+```
 
 ## Ajustes Gráficos
 
@@ -1123,10 +1207,11 @@ Da mesma forma que podemos definir símbolos para gráficos de pontos, podemos d
 
 Quando o parâmetro `lty` é definido, ele deve ser um número dentro da tabela de símbolos descrita abaixo (números de 0 a 5), ou strings de seus respectivos nomes.
 
-```{r, echo = FALSE}
+```{r plot_linhas, echo = FALSE}
 num <- 0:6
 nam <- c("blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash")
-plot(rep(1:2, 7), rep(1:7, 2), type = "n", xlim = c(.5, 2), ylim = c(0, 8), xlab = "", ylab = "")
+plot(rep(1:2, 7), rep(1:7, 2), type = "n",
+     xlim = c(0.5, 2), ylim = c(0, 8), xlab = "", ylab = "")
 for(i in 1:7)
 {
   lines(1:2, c(i, i), lty = num[i])
@@ -1246,7 +1331,8 @@ Utilizando o parâmetro `col` é possível definir as cores dos próximos gráfi
 Exemplo
 
 ```{r}
-par(col = "red", col.axis = "yellow", col.lab = "blue", col.main = "brown", col.sub = "green", col)
+par(col = "red", col.axis = "yellow", col.lab = "blue",
+    col.main = "brown", col.sub = "green", col)
 plot(1:5, main = "Título", sub = "Subtítulo")
 ```
 
@@ -1284,11 +1370,48 @@ plot(1:5, xlab = "\160", main = "Título", sub = "Subtítulo")
 
 ### Representando tabelas de contingencia
 
+```{r}
+barplot(table(mtcars$gear, mtcars$carb), beside = TRUE, col = 2:4)
+```
+
 ### Representando funções matemáticas
+
+É possível representar funções matemáticas no `R` utilizando a função `curve`.
+Como foi visto na seção [1.5](#funcoes), podemos criar funções dentro do `R`, e essas funções serão utilizadas para que possamos representar funções matemáticas. 
+É importante frisar que a função que será inserida no comando `curve` deve estar em função de uma variável `x`.
+
+Por exemplo:
+
+```{r}
+fun <- function(x) x^2
+curve(fun)
+```
+
+Vemos no gráfico acima que o gráfico da função foi feito utilizando o valor `x` entre 0 e 1. Na função `curve`, podemos definir os argumentos `from` e `to`, que vão definir os valores iniciais e finais de `x`a serem representados no gráfico.
+
+```{r}
+fun <- function(x) x^3
+curve(fun, from = -1, to = 1)
+```
+
+Além dos arumentos `from` e `to`, a função `curve` pode receber o argumento `n` que representa o número de pontos a serem representados no gráfico (por padrão `n = 101`), além de receber também as opções descritas nas [seções anteriores](#principais-ajustes).
+
+```{r}
+fun <- function(x) (1/sqrt(2 * pi)) * exp(-0.5*(x^2))
+curve(fun, from = -3, to = 3, n = 30, type = "o", pch = 3, lty = 4, col = 2,
+      main = "Distribuição normal padronizada", xlab = "x", ylab = "Densidade")
+```
 
 ### Dispositivos Gráficos {#dispositivos-graficos}
 
+Dispositivos gráficos, são interfaces onde os gráficos gerados são exibidos, seja esse um dispositivo gráfico integrado na sua IDE, como por exemplo Rstudio, ou uma janela gráfica aberta no seu sistema operacional, ou até mesmo um arquivo no seu computador.
+No `R`, quando chamamos uma função que gera um gráfico, automaticamente é criado um dispositivo gráfico padrão, que varia de acordo com a plataforma que você está utilizando. Em sistemas operacionais baseados em Unix o dispositivo gráfico padrão é `X11()`, no sistema operacional Microsoft Windows o dispositivo gráfico padrão é `windows()`, e independente do sistema operacional quando utilizamos Rstudio o dispositivo gráfico padrão é o `RStudioGD()`, que é a janela integrada para gráficos.
+Ambos `X11()` e `windows()` podem ser chamados a qualquer momento dentro de uma sessão do `R` para criar uma janela externa onde serão exibidos os gráficos.
+Outros dispositivos gráficos além das janelas externas mencionadas são os dispositivos gráficos de arquivos que serão explicados na [próxima seção](#exportando-gráficos).
+
 ### Exportando gráficos
+
+
 
 # Noções de Probabilidade
 
