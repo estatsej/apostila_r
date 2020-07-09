@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Estatística Básica | Uma Breve Introdução ao R</title>
-  <meta name="description" content="2 Estatística Básica | Uma Breve Introdução ao R" />
+  <title>4 Noções de Probabilidade | Uma Breve Introdução ao R</title>
+  <meta name="description" content="4 Noções de Probabilidade | Uma Breve Introdução ao R" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Estatística Básica | Uma Breve Introdução ao R" />
+  <meta property="og:title" content="4 Noções de Probabilidade | Uma Breve Introdução ao R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="estatsej/apostila_r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Estatística Básica | Uma Breve Introdução ao R" />
+  <meta name="twitter:title" content="4 Noções de Probabilidade | Uma Breve Introdução ao R" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="princípios-básicos.html"/>
-<link rel="next" href="gráficos.html"/>
+<link rel="prev" href="gráficos.html"/>
+
 <script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -264,149 +264,145 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="estatística-básica" class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Estatística Básica</h1>
-<div id="medida-de-posição" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Medida de posição</h2>
-<p>As medidas descritivas são úteis para a representação dos dados a serem trabalhados e normalmente precedem qualquer análise estatística.</p>
-<div id="média" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Média</h3>
-<p>Para se calcular a média de um conjunto de dados utiliza-se a função <code>mean()</code>.</p>
-<p>Exemplo :</p>
-<pre><code>{r}
-x &lt;- 1:11
-mean(x)</code></pre>
+<div id="noções-de-probabilidade" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Noções de Probabilidade</h1>
+<div id="amostragem" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Amostragem</h2>
+<p>O comando <code>sample()</code> tem a função de obter amostras de alguma estrutura de dados que for de interesse. Para isso, é necessário informar:</p>
+<ul>
+<li>Os dados</li>
+<li>Tamanho da Amostra</li>
+<li>Se será uma amostra com ou sem reposição</li>
+<li>As probabilidades de cada elemento (Padrão = 1/2)</li>
+</ul>
+<p>Exemplos:</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="noções-de-probabilidade.html#cb210-1" aria-hidden="true"></a>valores &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="co">#dados</span></span>
+<span id="cb210-2"><a href="noções-de-probabilidade.html#cb210-2" aria-hidden="true"></a>letras &lt;-<span class="st"> </span>letters</span>
+<span id="cb210-3"><a href="noções-de-probabilidade.html#cb210-3" aria-hidden="true"></a></span>
+<span id="cb210-4"><a href="noções-de-probabilidade.html#cb210-4" aria-hidden="true"></a><span class="co"># amostra de 5 elementos com reposição</span></span>
+<span id="cb210-5"><a href="noções-de-probabilidade.html#cb210-5" aria-hidden="true"></a><span class="kw">sample</span>(<span class="dt">x =</span> valores, <span class="dt">size =</span> <span class="dv">5</span>, <span class="dt">replace =</span> T)</span></code></pre></div>
+<pre><code>## [1] 4 9 8 6 4</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="noções-de-probabilidade.html#cb212-1" aria-hidden="true"></a><span class="co"># amostra de 7 elementos sem reposição</span></span>
+<span id="cb212-2"><a href="noções-de-probabilidade.html#cb212-2" aria-hidden="true"></a><span class="kw">sample</span>(<span class="dt">x =</span> letras, <span class="dt">size =</span> <span class="dv">7</span>, <span class="dt">replace =</span> F)</span></code></pre></div>
+<pre><code>## [1] &quot;h&quot; &quot;c&quot; &quot;d&quot; &quot;t&quot; &quot;l&quot; &quot;q&quot; &quot;j&quot;</code></pre>
 </div>
-<div id="mediana" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Mediana</h3>
-<p>Para se calcular mediana de um conjunto de dados utiliza-se a função <code>median()</code>.</p>
+<div id="análise-combinatória" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Análise Combinatória</h2>
+<div id="permutação" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Permutação</h3>
+<p>A permutação de n elementos distinos pode ser calculada no R através da função <code>factorial()</code>.</p>
 <p>Exemplo:</p>
-<pre><code>{r}
-x &lt;- 11:20
-median(x)</code></pre>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="noções-de-probabilidade.html#cb214-1" aria-hidden="true"></a><span class="kw">factorial</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 3628800</code></pre>
 </div>
-<div id="mínimo-e-máximo" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Mínimo e máximo</h3>
-<p>Assim como quase tudo no R, existe mais de uma maneira de se calcular o mínimo e o máximo em um conjunto de dados. A primeira maneira é utilizando as funções <code>min()</code> e <code>max()</code>.</p>
+<div id="arranjo" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Arranjo</h3>
+<p>Um Arranjo considera a posição dos elementos além de suas combinações, diferente da combinação, que considera somente os elementos, e não a ordem deles.</p>
+<p>Não há uma função pronta no R base para isso, mas é possível implementá-la através da seguinte função:</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="noções-de-probabilidade.html#cb216-1" aria-hidden="true"></a>arranjo &lt;-<span class="st"> </span><span class="cf">function</span>(n, x){</span>
+<span id="cb216-2"><a href="noções-de-probabilidade.html#cb216-2" aria-hidden="true"></a>  <span class="kw">return</span>(<span class="kw">factorial</span>(n) <span class="op">/</span><span class="st"> </span><span class="kw">factorial</span>(n<span class="op">-</span>x))</span>
+<span id="cb216-3"><a href="noções-de-probabilidade.html#cb216-3" aria-hidden="true"></a>}</span></code></pre></div>
 <p>Exemplo:</p>
-<pre><code>{r}
-x &lt;- 1:100
-min(x)
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="noções-de-probabilidade.html#cb217-1" aria-hidden="true"></a><span class="co"># calculando Arr(5,3)</span></span>
+<span id="cb217-2"><a href="noções-de-probabilidade.html#cb217-2" aria-hidden="true"></a><span class="kw">arranjo</span>(<span class="dv">5</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 60</code></pre>
+</div>
+<div id="combinação" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Combinação</h3>
+<p>Para fazer a combinação, utiliza-se a função <code>choose()</code>.</p>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="noções-de-probabilidade.html#cb219-1" aria-hidden="true"></a><span class="co"># calculando comb(5,3)</span></span>
+<span id="cb219-2"><a href="noções-de-probabilidade.html#cb219-2" aria-hidden="true"></a><span class="kw">choose</span>(<span class="dv">5</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+</div>
+</div>
+<div id="distribuições-de-probabilidade" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Distribuições de Probabilidade</h2>
+<p>Ao trabalhar com variáveis aleatórias, geralmente são associadas distribuições de probabilidade a essas variáveis. E, tendo conhecimento dessas distribuições, é possível obter informações dos dados, a partir da estatística.</p>
+<p>No R básico estão implementadas as seguintes distribuições:</p>
+<ul>
+<li>Beta</li>
+<li>Binomial</li>
+<li>Cauchy</li>
+<li>Chi-quadrado</li>
+<li>Exponencial</li>
+<li>F</li>
+<li>Gamma</li>
+<li>Geométrica</li>
+<li>Hipergeométrica</li>
+<li>Log-Normal</li>
+<li>Multinomial</li>
+<li>Binomial Negativa</li>
+<li>Normal</li>
+<li>Poisson</li>
+<li>T de Student</li>
+<li>Uniforme</li>
+<li>Weibull</li>
+</ul>
+<div id="geração-de-valores-aleatórios" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Geração de valores aleatórios</h3>
+<p>Para se gerar valores aleatórios que venham de alguma distribuição de probabilidade utiliza-se o prefixo “r” juntamente com a abreviação da distribuição, da seguinte forma:</p>
+<p><code>r"disribuição"(n,...)</code></p>
+<p>Para essa função, é necessário informar:</p>
+<ul>
+<li><em>n</em>: quantidade de valores aleatórios gerados</li>
+<li><em>…</em>: os parâmetros da distribuição</li>
+</ul>
+<p>Exemplos:</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="noções-de-probabilidade.html#cb221-1" aria-hidden="true"></a><span class="co"># gerando 10 valores aleatórios baseados em uma normal padrão</span></span>
+<span id="cb221-2"><a href="noções-de-probabilidade.html#cb221-2" aria-hidden="true"></a><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##  [1]  1.3974267  1.7636530  0.4856014 -0.2657389  0.1516114  1.3766098
+##  [7] -0.1803943 -1.5676751 -0.2607259  0.9618104</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="noções-de-probabilidade.html#cb223-1" aria-hidden="true"></a><span class="co"># gerando 1000 valores aleaórios para uma normal com media = 100 e desvio padrão = 5</span></span>
+<span id="cb223-2"><a href="noções-de-probabilidade.html#cb223-2" aria-hidden="true"></a>valores &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb223-3"><a href="noções-de-probabilidade.html#cb223-3" aria-hidden="true"></a></span>
+<span id="cb223-4"><a href="noções-de-probabilidade.html#cb223-4" aria-hidden="true"></a><span class="co"># criando um histograma para os dados acima</span></span>
+<span id="cb223-5"><a href="noções-de-probabilidade.html#cb223-5" aria-hidden="true"></a><span class="kw">hist</span>(valores, <span class="dt">main =</span> <span class="st">&quot;valores gerados&quot;</span>)</span></code></pre></div>
+<p><img src="apostila_r_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+</div>
+<div id="função-de-densidade-probabilidade" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Função de Densidade / Probabilidade</h3>
+<p>A função para gerar as probabilidades da função densidade de uma distribuição é semelhante a função anterior, porém, utiliza-se o prefixo “d”:</p>
+<p><code>d"disribuição"(x,...)</code></p>
+<p>Para essa função, é necessário informar:</p>
+<ul>
+<li><em>x</em>: o quantil associado a probabilidade de interesse</li>
+<li><em>…</em>: os parâmetros da distribuição</li>
+</ul>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="noções-de-probabilidade.html#cb224-1" aria-hidden="true"></a><span class="co"># achando P(X = 2) para X ~ Bin(n = 4, p = 0.7)</span></span>
+<span id="cb224-2"><a href="noções-de-probabilidade.html#cb224-2" aria-hidden="true"></a><span class="kw">dbinom</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">prob =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<pre><code>## [1] 0.2646</code></pre>
+</div>
+<div id="função-acumulada" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Função Acumulada</h3>
+<p>De forma análoga, a probabilidade da função acumulada de determinada distribuição é calculada ao utilizar o prefixo “p”:</p>
+<p><code>p"disribuição"(q,...)</code></p>
+<p>Para essa função, é necessário informar:</p>
+<ul>
+<li><em>q</em>: o quantil associado a probabilidade de interesse</li>
+<li><em>…</em>: os parâmetros da distribuição</li>
+</ul>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="noções-de-probabilidade.html#cb226-1" aria-hidden="true"></a><span class="co"># achando a probabilidade acumulada para o exemplo anterior</span></span>
+<span id="cb226-2"><a href="noções-de-probabilidade.html#cb226-2" aria-hidden="true"></a><span class="kw">pbinom</span>(<span class="dt">q =</span> <span class="dv">2</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">prob =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<pre><code>## [1] 0.3483</code></pre>
+</div>
+</div>
+<div id="quantis-1" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Quantis</h2>
+<p>Para o cálculo dos quartis de determinada distribuição, usa-se o prefixo “q”:</p>
+<p><code>q"disribuição"(p,...)</code></p>
+<p>Para essa função, é necessário informar:</p>
+<ul>
+<li><em>p</em>: a probabilidade associada ao quantil de interesse</li>
+<li><em>…</em>: os parâmetros da distribuição</li>
+</ul>
+<p>Exemplo:</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="noções-de-probabilidade.html#cb228-1" aria-hidden="true"></a><span class="co"># Calculando y tal que P(X&lt;y) = 0.5 para a distribuição usada anteriormente</span></span>
+<span id="cb228-2"><a href="noções-de-probabilidade.html#cb228-2" aria-hidden="true"></a><span class="kw">qbinom</span>(<span class="dt">p =</span> <span class="fl">0.5</span>, <span class="dt">size =</span> <span class="dv">4</span>, <span class="dt">prob =</span> <span class="fl">0.7</span>)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
 
-max(x)</code></pre>
-<p>A outra forma é utilizando a função <code>range()</code>, mas neste caso o R retornará um vetor de 2 posições, sendo o mínimo representado pelo primeiro elemento e o máximo pelo segundo.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x &lt;- 1:100
-range(x)</code></pre>
-</div>
-<div id="quantis" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Quantis</h3>
-<p>Para se obter os quantis de um conjunto de dados utiliza-se a função <code>quantiles()</code>.</p>
-<p>É possível indicar quais são os quantis de interesse dentro da função. Por padrão, a função retorna os quantis de 0%, 25%, 50%, 75% e 100%, mas é possível achar os qualquer quantil de interesse em uma sequência de valores.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x &lt;- 1:11 + c(rep(1.2,4),rep(2.3,5),rep(4.3,2))
-quantile(x)
-
-quantile(x,c(.05,.95))</code></pre>
-</div>
-<div id="moda" class="section level3" number="2.1.5">
-<h3><span class="header-section-number">2.1.5</span> Moda</h3>
-<p>No R base não existe uma função específica para se calcular a moda, isto é, o valor mais frequente no conjunto. Então, uma sugestão para se verificar esse valor mais frequente é criar uma tabela de frequência através do comando <code>table()</code>, visto anteriormente, e investigar nessa tabela o valor que mais se repete.</p>
-<p><em>Observação 1</em>: Note que este método só é válido para dados de natureza quantitativa discreta.
-<em>Observação 2</em>: Utiliza-se a função <code>which.max()</code> para retornar a posição da tabela com o máximo da frequência.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x=c(2,1,2,2,1,4,4,5,2,6,5,3,2,4,1,6)
-tb=table(x)
-tb
-which.max(tb)</code></pre>
-</div>
-<div id="função-summary" class="section level3" number="2.1.6">
-<h3><span class="header-section-number">2.1.6</span> Função Summary</h3>
-<p>A função <code>summary()</code> é uma função genérica dentro do R que, quando a aplicada a objetos da classe de vetor numérico, retorna algumas medidas de posição.</p>
-<p>Exemplo:</p>
-<pre><code>{r}
-x=c(1.3,1.5,1.3,1.7,1.9,2,1.4)
-summary(x)</code></pre>
-</div>
-</div>
-<div id="medidas-dispersao" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Medidas de Dispersão</h2>
-<div id="variância" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Variância</h3>
-<p>Uma medida muito importante para se entender o comportamento dos dados é a variância, calculada através da fórmula <code>var(dados)</code>.</p>
-<p>Exemplo:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="estatística-básica.html#cb150-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="dv">7</span>, <span class="fl">5.4</span>, <span class="dv">10</span>)</span>
-<span id="cb150-2"><a href="estatística-básica.html#cb150-2" aria-hidden="true"></a><span class="kw">var</span>(x)</span></code></pre></div>
-<pre><code>## [1] 11.672</code></pre>
-</div>
-<div id="desvio-padrão" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Desvio Padrão</h3>
-<p>Sabendo que o desvio padrão é a raiz quadrada da variância, é possível achá-lo aplicando a função de raiz quadrada, vista nas sessões anteriores, na função de variância. A sintaxe fica da seguinte forma: <code>sqrt(var(x))</code>.</p>
-<p>Uma outra forma de se calcular o desvio padrão é utilizando a função <code>sd(dados)</code>.</p>
-<p>Exemplo:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="estatística-básica.html#cb152-1" aria-hidden="true"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">3.5</span>, <span class="dv">7</span>, <span class="fl">5.4</span>, <span class="dv">10</span>)</span>
-<span id="cb152-2"><a href="estatística-básica.html#cb152-2" aria-hidden="true"></a></span>
-<span id="cb152-3"><a href="estatística-básica.html#cb152-3" aria-hidden="true"></a><span class="co"># calculando o desvio padrão atráves da raiz da variância</span></span>
-<span id="cb152-4"><a href="estatística-básica.html#cb152-4" aria-hidden="true"></a><span class="kw">sqrt</span>(<span class="kw">var</span>(x))</span></code></pre></div>
-<pre><code>## [1] 3.416431</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="estatística-básica.html#cb154-1" aria-hidden="true"></a><span class="co"># calculando o desvio padrão através da função sd</span></span>
-<span id="cb154-2"><a href="estatística-básica.html#cb154-2" aria-hidden="true"></a><span class="kw">sd</span>(x)</span></code></pre></div>
-<pre><code>## [1] 3.416431</code></pre>
-</div>
-<div id="coeficiente-de-variação" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Coeficiente de Variação</h3>
-<p>Para se ter uma métrica da variabilidade relativa dos dados é interessante vermos o coeficiente de variação, dada pela divisão do desvio padrão pela média vezes 100. Escrevendo essa fórmula no R obtém-se a seguinte sintaxe:</p>
-<p><code>(sd(dados)/mean(dados)) *100</code></p>
-<p>Exemplo:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="estatística-básica.html#cb156-1" aria-hidden="true"></a><span class="co"># calculando o coeficiente de variação para o vetor anterior</span></span>
-<span id="cb156-2"><a href="estatística-básica.html#cb156-2" aria-hidden="true"></a>(<span class="kw">sd</span>(x)<span class="op">/</span><span class="kw">mean</span>(x)) <span class="op">*</span><span class="dv">100</span></span></code></pre></div>
-<pre><code>## [1] 63.50243</code></pre>
-</div>
-<div id="amplitude" class="section level3" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> Amplitude</h3>
-<p>Para se calcular a amplitude basta subtrair o valor mínimo do máximo presente no conjunto de dados.</p>
-<p>Exemplo:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="estatística-básica.html#cb158-1" aria-hidden="true"></a><span class="co"># calculando a amplitude do vetor anterior</span></span>
-<span id="cb158-2"><a href="estatística-básica.html#cb158-2" aria-hidden="true"></a>amp &lt;-<span class="st"> </span><span class="kw">max</span>(x) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x)</span>
-<span id="cb158-3"><a href="estatística-básica.html#cb158-3" aria-hidden="true"></a>amp</span></code></pre></div>
-<pre><code>## [1] 9</code></pre>
-</div>
-</div>
-<div id="correlação" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Correlação</h2>
-<p>Quando tratamos de variáveis quantitativas, principalmente contínuas, é interessante ter uma medida explicativa a respeito da quantidade de variabilidade compartilhada entre duas variáveis. Essa medida é usualmente o coeficiente de correlação, um valor entre -1 e 1 que explica a força (proximidade de |1|) e direção (positiva ou negativa) da correlação.</p>
-<p>Há 3 abordagens diferentes para se calcular essa medida(Pearson, Kendall e Spearman). Em todos os casos, utiliza-se a função <code>cor()</code>.</p>
-<p><em>Observação:</em> Caso não seja especificado na função qual método será utilizado, é aplicado o método de pearson.</p>
-<div id="coeficiente-de-pearson" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Coeficiente de Pearson</h3>
-<p>Para se calcular o coeficiente de Pearson usa-se o comando <code>cor(..., method = "pearson")</code></p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="estatística-básica.html#cb160-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">7</span></span>
-<span id="cb160-2"><a href="estatística-básica.html#cb160-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb160-3"><a href="estatística-básica.html#cb160-3" aria-hidden="true"></a></span>
-<span id="cb160-4"><a href="estatística-básica.html#cb160-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] -0.2419215</code></pre>
-</div>
-<div id="coeficiente-de-kendall" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Coeficiente de Kendall</h3>
-<p>Para se calcular o coeficiente de Kendall usa-se o comando <code>cor(..., method = "kendall")</code></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="estatística-básica.html#cb162-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb162-2"><a href="estatística-básica.html#cb162-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)</span>
-<span id="cb162-3"><a href="estatística-básica.html#cb162-3" aria-hidden="true"></a></span>
-<span id="cb162-4"><a href="estatística-básica.html#cb162-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] 0.04761905</code></pre>
-</div>
-<div id="coeficiente-de-spearman" class="section level3" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> Coeficiente de Spearman</h3>
-<p>Para se calcular o coeficiente de Spearman usa-se o comando <code>cor(..., method = "spearman")</code></p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="estatística-básica.html#cb164-1" aria-hidden="true"></a>v1 &lt;-<span class="st"> </span><span class="dv">11</span><span class="op">:</span><span class="dv">20</span></span>
-<span id="cb164-2"><a href="estatística-básica.html#cb164-2" aria-hidden="true"></a>v2 &lt;-<span class="st"> </span><span class="dv">20</span><span class="op">:</span><span class="dv">11</span></span>
-<span id="cb164-3"><a href="estatística-básica.html#cb164-3" aria-hidden="true"></a></span>
-<span id="cb164-4"><a href="estatística-básica.html#cb164-4" aria-hidden="true"></a><span class="kw">cor</span>(v1, v2, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] -1</code></pre>
-</div>
 </div>
 </div>
             </section>
@@ -414,8 +410,8 @@ summary(x)</code></pre>
           </div>
         </div>
       </div>
-<a href="princípios-básicos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="gráficos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gráficos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1010,9 +1010,285 @@ dados
 pie(dados$numero, labels = dados$numero)
 ```
 
-# parte do japa
+## parte do japa
 
-# parte do duze
+## Ajustes Gráficos
+
+### Principais Ajustes
+
+As funções gráficas do `R` base, por padrão, tem opções em comum. Estas São:
+
+- `main` Define o título do gráfico
+- `sub` Define um subtítulo do gráfico
+- `xlab` e `ylab` Trocam as legendas dos eixos
+- `xlim` e `ylim` Trocam os limites dos eixos
+- `col` Define a cor do gráfico
+
+Exemplo:
+
+```{r exemplo_ajustes_principais}
+plot(iris$Petal.Width, iris$Petal.Length,
+     main = "Gráfico de dispersão",
+     sub = "Dispersão do comprimento por largura das pétalas das flores",
+     xlab = "Largura da pétala",
+     ylab = "Comprimento da pétala",
+     xlim = c(0, 2), ylim = c(0, 8),
+     col = "royalblue2")
+```
+
+### Tipos de gráficos
+
+A função `plot` pode gerar diversos tipos diferentes de gráficos, estes tipos podem ser definidos com o argumento `type`. 
+
+Como por exemplo na seguinte sintaxe `plot(x, y, type = "p")`, que gera um gráfico de pontos.
+
+Abaixo estão listadas todos os tipos de gráficos q a função `plot` pode gerar:
+
+- `p` **P**ontos,
+- `l` **L**inhas,
+- `b` Pontos e Linhas (**B**oth),
+- `c` Somente as linhas da opção `b`,
+- `o` Pontos e Linhas com sobreposição (**o**verplotted),
+- `h` Linhas verticais como **h**istogramas,
+- `s` Gráfico tipo e**s**cada (movendo primeiro horizontalmente),
+- `S` Gráfico tipo e**S**cada (movendo primeiro verticalmente),
+- `n` **N**enhum gráfico.
+
+No exemplo abaixo temos todos os tipos de gráficos representados.
+
+```{r exemplo_tipos_graficos}
+tipos <- c("p", "l", "b", "c", "o", "h", "s", "S", "n")
+par(mfrow = c(3, 3))
+for(tipo in tipos)
+{
+  plot(1:5, type = tipo, main = paste("tipo =", tipo))
+}
+```
+
+A função `par` utilizada no exemplo acima será explicada na seção [3.3.6](#funcao-par).
+
+### Sobreposição de Gráficos
+
+No `R` existem funções que permitem sobrepor gráficos já feitos. Algumas delas são:
+
+- `lines()`: Cria uma linha contínua sobrepondo o gráfico
+- `points()`: Cria pontos sobrepondo o gráfico
+- `polygon()`: Cria polígonos sobrepondo o gráfico
+
+Exemplo utilizando `lines`
+
+```{r}
+plot(1:5)
+lines(1:5)
+```
+
+Exemplo utilizando `points`
+
+```{r}
+plot(table(rep(1:5, 1:5)))
+points(1:5, 1:5)
+```
+
+Exemplo utilizando `points`
+
+```{r}
+plot(table(rep(1:5,1:5)))
+polygon(c(1,5,5,1), c(0,0,5,1), col = "blue")
+```
+
+### Símbolos e Tipos de Linhas
+
+Quando são gerados gráficos de pontos dentro do `R`, é possível modificar os simbolos usados como pontos utilizando o argumento `pch` dentro de funções que gerem gráficos com pontos.
+
+Quando o parâmetro `pch` é definido, ele deve ser um número dentro da tabela de símbolos descrita abaixo (números de 0 a 25), ou uma string com um único símbolo.
+
+```{r, echo = FALSE}
+plot(c(sort(rep(1:5, 5)), 5), pch = 0:25, ylim = c(1, 5.5), xlab = "", ylab = "")
+text(x = 1:26, y = c(sort(rep(1:5, 5)), 5)+.25, labels = 0:25)
+```
+
+Exemplo de pontos usando números de `pch`
+
+```{r}
+plot(1, pch = 11)
+```
+
+Exemplo de pontos utilizando strings de `pch`
+
+```{r}
+plot(1, pch = "%")
+```
+
+Da mesma forma que podemos definir símbolos para gráficos de pontos, podemos definir tipos de linhas para gráficos de linhas, para isso, é utilizado o argumento `lty` dentro de funções que gerem gráficos de linhas.
+
+Quando o parâmetro `lty` é definido, ele deve ser um número dentro da tabela de símbolos descrita abaixo (números de 0 a 5), ou strings de seus respectivos nomes.
+
+```{r, echo = FALSE}
+num <- 0:6
+nam <- c("blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash")
+plot(rep(1:2, 7), rep(1:7, 2), type = "n", xlim = c(.5, 2), ylim = c(0, 8), xlab = "", ylab = "")
+for(i in 1:7)
+{
+  lines(1:2, c(i, i), lty = num[i])
+  text(.7, i, paste(num[i], "-", nam[i], ":"))
+}
+```
+
+
+### Texto E Legendas
+
+
+
+### Função par {#funcao-par}
+
+A função `par` define os parâmetros dos gráficos a serem gerados, abaixo mostraremos todas as opções dentro da função:
+
+```
+`r graphics:::.Pars`
+```
+
+Como mostrado acima, existem diversos parâmetros gráficos a serem definidos, porém, neste curso serão apresentadas aplicações de todas as opções.
+
+#### Concatenando gráficos
+
+Utilizando as opções `mfrow` ou `mfcol`, os [dispositivos gráficos](#dispositivos-graficos) são divididos em uma matriz, onde cada elemento será preenchido por um novo gráfico gerado.
+
+Quando chamamos uma dessas duas funções, definimos o tamanho da matriz a ser gerada, e está será preenchida por linha quando se utiliza a função `mfrow`, e por coluna quando se utiliza `mfcol`.
+
+Exemplo utilizando `mfrow`
+
+```{r}
+par(mfrow = c(2, 2))
+for(i in 1:4) plot(1:5, type = "b", col = i)
+```
+
+Exemplo utilizando `mfcol`
+
+```{r}
+par(mfcol = c(2, 2))
+for(i in 1:4) plot(1:5, type = "b", col = i)
+```
+
+Note que a única diferença na saída das duas funções é a ordem em que os gráficos são posicionados.
+
+Exemplo:
+
+```{r}
+set.seed(123) # Semente para reproducibilidade do código
+par(mfcol = c(2, 1))
+dados <- rnorm(100)
+hist(dados)
+boxplot(dados, horizontal = TRUE)
+```
+
+#### Definindo margens
+
+Utilizando a opção `mar`, podemos definir o tamanho das margens de cada gráfico a ser feito. 
+
+O parâmetro `mar` recebe um vetor númerico com 4 elementos, onde o primeiroa representa a margem inferior, o segundo a margem esquerda, o terceiro e margem de cima e por último a margem da direita, como mostrado a seguir: `par(mar = c(baixo, esquerda, cima, direita))`
+
+Exemplo
+
+```{r}
+set.seed(123)
+dados <- rnorm(100)
+par(mfrow = c(2, 1), mar = c(2.1, 4.1, 2.1, 2.1))
+hist(dados)
+boxplot(dados, horizontal = TRUE)
+```
+
+#### Orientação dos eixos
+
+Utilizando o parâmetro `las`, é possível definir a orientação do texto nos eixos x e y. Este recebe um número de 0 a 3 para definir tal orientação.
+
+Exemplo descrevendo todas as opções
+
+```{r}
+par(mfrow = c(2, 2))
+for(i in 0:3)
+{
+  par(las = i)
+  plot(1:5, main = paste("las =", i))
+}
+```
+
+#### Escala de texto
+
+Utilizando o parâmetro `cex`, é possível mudar o tamanho de todo o texto presente no gráfico. Além da opção `cex`, existem quatro outra opções para mudar a escala do texto de partes específicas do gráfico. Essas são:
+
+- `cex.axis`: Escala do texto dos eixos
+- `cex.lab`: Escala do texto dos nomes dos eixos
+- `cex.main`: Escala do texto do título
+- `cex.sub`: Escala do texto do subtítulo
+
+Exemplos
+
+```{r}
+par(cex = 1.5)
+plot(1:5)
+```
+
+```{r}
+par(cex = 1, cex.axis = 2, cex.lab = 0.8, cex.main = 0.5, cex.sub = 1.5)
+plot(1:5, main = "Título", sub = "Subtítulo")
+```
+
+#### Definindo cores
+
+Utilizando o parâmetro `col` é possível definir as cores dos próximos gráficos a serem feitos. Como no tópico anterior, temos opções separadas para definir a cor de diferentes partes do gráfico, porém, as opção `col` não define cores para os textos do gráfico, define somente para o gráfico em si (bordas, pontos, linhas, etc.). Portanto todas as opções para definição de cores são:
+
+- `col`: Define a cor do gráfico
+- `col.axis`: Define a cor do texto dos eixos
+- `col.lab`: Define a cor do texto dos nomes dos eixos
+- `col.main`: Define a cor do título
+- `col.sub`: Define a cor do subtítulo
+
+Exemplo
+
+```{r}
+par(col = "red", col.axis = "yellow", col.lab = "blue", col.main = "brown", col.sub = "green", col)
+plot(1:5, main = "Título", sub = "Subtítulo")
+```
+
+#### Tipos de fonte
+
+Utilizando o parâmetro `font`, é possível definir o tipo de texto a ser usado no gráfico. Todos os argumentos `font.*` recebem um número de 1 a 5, onde esses números representam:
+
+1. Texto padrão
+2. Texto Negrito
+3. Texto Italico
+4. Texto Negrito Italico
+5. Codificação de Símbolos Adobe
+
+Como nos tópicos anteriores, temos opções específicas para diferentes partes do gráfico, estas são:
+
+- `font`: Define a fonte do gráfico
+- `font.axis`: Define a fonte do texto dos eixos
+- `font.lab`: Define a fonte do texto dos nomes dos eixos
+- `font.main`: Define a fonte do título
+- `font.sub`: Define a fonte do subtítulo
+
+Exemplo
+
+```{r}
+par(font = 4)
+plot(1:5)
+```
+
+```{r}
+par(font = 1, font.axis = 2, font.main = 3, font.sub = 4, font.lab = 5)
+plot(1:5, xlab = "\160", main = "Título", sub = "Subtítulo")
+```
+
+### Cores
+
+### Representando tabelas de contingencia
+
+### Representando funções matemáticas
+
+### Dispositivos Gráficos {#dispositivos-graficos}
+
+### Exportando gráficos
 
 # Noções de Probabilidade
 
@@ -1051,7 +1327,7 @@ Um Arranjo considera a posição dos elementos além de suas combinações, dife
 
 Não há uma função pronta no R base para isso, mas é possível implementá-la através da seguinte função:
 
-```
+```{r}
 arranjo <- function(n, x){
   return(factorial(n) / factorial(n-x))
 }
@@ -1170,5 +1446,3 @@ Exemplo:
 # Calculando y tal que P(X<y) = 0.5 para a distribuição usada anteriormente
 qbinom(p = 0.5, size = 4, prob = 0.7)
 ```
-
-
