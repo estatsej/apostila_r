@@ -957,13 +957,6 @@ dados
 barplot(dados$numero, names.arg = dados$letra)
 ```
 
-### Representando tabelas de contingencia
-
-```{r}
-barplot(table(mtcars$gear, mtcars$carb), beside = TRUE, col = 2:4)
-```
-
-
 ### Gráficos de Setores
 
 Para criar gráficos de setores no `R`, podemos utilizar a seguinte sintaxe `pie(dados)`, onde `dados` é um vetor numérico.
@@ -1015,6 +1008,20 @@ dados
 
 ```{r}
 pie(dados$numero, labels = dados$numero)
+```
+
+### Representando tabelas de contingencia
+
+Podemos fazer gráficos de barras para representar tabelas de contingência, para isso, utilizamos uma tabela de contingência dentro da função barplot.
+
+```{r}
+barplot(table(mtcars$gear, mtcars$carb))
+```
+
+Utilizando a opção `beside = TRUE` as barras ficam lado a lado.
+
+```{r}
+barplot(table(mtcars$gear, mtcars$carb), beside = TRUE, col = 2:4)
 ```
 
 ## Gráficos para variáveis contínuas
@@ -1235,7 +1242,6 @@ plot(1:5, type = "l", lty = 4)
 ```
 
 ### Texto E Legendas
-
 
 ### Função par {#funcao-par}
 
