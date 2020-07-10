@@ -1241,7 +1241,69 @@ Exemplo:
 plot(1:5, type = "l", lty = 4)
 ```
 
-### Texto E Legendas
+### Texto e Legendas
+
+*Texto*
+
+Para adicionar um texto ao gráfico, utiliza-se a função `text()`.
+
+```{r }
+plot(table(rep(1:5, 1:5)), ann = F)
+polygon(x = c(1, 5, 5, 1), y = c(0, 0, 5, 1), col = "blue")
+text(x = 3, y = 1, labels = "Exemplo de texto", col = "white", cex = 2, font = 2)
+```
+
+*Observação*: o comando `cex = ` informa o tamanho do texto e `font = `especifica o tipo de letra. Ambos são explicados mais detalhadamente no tópico [3.3.6][#funcao-par]
+
+*Legenda*
+
+Para adicionar legenda ao gráfico, utiliza-se a função `legend()`, sendo informadas as seguintes características:
+
+- A posição da legenda referente ao gráfico (X e Y)
+- O texto das legendas
+- Cores da legenda
+- Outras opções (cor, tamanho, etc)
+
+Exemplo:
+
+```{r }
+# exemplo com gráfico de barras
+dados <- c(rep("M", 211), rep("F", 42))
+
+# criando legenda para o gráfico de barras
+barplot(table(dados), col = c("red", "blue"), ylim = c(0,250))
+legend(x = 0.3, y = 230, legend = c("Feminino", "Masculino"), fill = c("red", "blue"))
+
+
+barplot(table(dados), col = c("red", "blue"), ylim = c(0,250))
+legend(x = 0.3, y = 230, legend = c("Feminino", "Masculino"), fill = c("red", "blue"), bty = "o", bg = 1, text.col = "white", text.font = 2)
+
+# exemplo com polígono de frequência
+dados <- rnorm(100, 75, sd = 20)
+histograma<-hist(dados)
+plot(2,xlim=c(40,110),ylim=c(0,150),type="n",ann=F)
+lines(x=c(histograma$breaks[1],
+          histograma$mids,tail(histograma$breaks,n=1)), 
+      y=c(0,histograma$counts,0),col="red",lwd=2,type="o")
+lines(x=c(histograma$breaks[1],histograma$mids,tail(histograma$breaks,n=1)),
+      y=c(0,cumsum(histograma$counts),tail(cumsum(histograma$counts),n=1)),
+      col="blue",lwd=3)
+legend(x=40,y=120,legend=c("freq acumulada","freq absoluta"),lty = c(1,2)
+       ,cex=0.8,lwd=0.2)
+
+# mudando estilo
+plot(2,xlim=c(40,110),ylim=c(0,150),type="n",ann=F)
+lines(x=c(histograma$breaks[1],
+          histograma$mids,tail(histograma$breaks,n=1)), 
+      y=c(0,histograma$counts,0),col="red",lwd=2,type="o")
+lines(x=c(histograma$breaks[1],histograma$mids,tail(histograma$breaks,n=1)),
+      y=c(0,cumsum(histograma$counts),tail(cumsum(histograma$counts),n=1)),
+      col="blue",lwd=3)
+legend(x=40,y=120,legend=c("freq acumulada","freq absoluta"),lty = c(1,2)
+       ,cex=0.8,lwd=1.2,bty="o",bg=1,col = "white",text.col = "white"
+       ,text.font = 2)
+
+```
 
 ### Função par {#funcao-par}
 
@@ -1386,6 +1448,43 @@ plot(1:5, xlab = "\160", main = "Título", sub = "Subtítulo")
 ```
 
 ### Cores
+
+Para listar todas as cores existentes do R, usa-se o comando `colors()`.
+
+Exemplo:
+```{r}
+# printando as 10 primeiras cores do R
+head(colors(), 10)
+```
+
+*Escalas de cores padrões do R*
+No R existem escalas de cores padrões para faciliar a escolha de cores nos gráficos.
+
+Exemplo de escalas de cores:
+```{r}
+# rainbow
+pie(rep(1,15), col = rainbow(15))
+# heat.colors
+pie(rep(1,15), col = heat.colors(15))
+# terrain.colors
+pie(rep(1,15), col = terrain.colors(15))
+# topo.colors
+pie(rep(1,15), col = topo.colors(15))
+# cm.colors
+pie(rep(1,15), col = cm.colors(15))
+```
+
+*Função RGB*
+
+A função `rgb(red, green, blue, alpha)` retrona um valor de cor com base na escala RGB, ou seja, combinando um conjunto de componentes vermelho, verde e azul. Também é possível definir a opacidade(alpha) através dessa função. 
+
+Exemplo:
+
+```{r}
+plot(table(rep(1:5, 1:5)), ann = F, lwd = 5)
+polygon(x = c(1,5,5,1), y = c(0,0,5,1), lwd = 0.1, col = rgb(0,0,1,.4), border = "white")
+
+```
 
 
 ### Representando funções matemáticas
