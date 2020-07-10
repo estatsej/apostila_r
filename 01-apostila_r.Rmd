@@ -957,6 +957,13 @@ dados
 barplot(dados$numero, names.arg = dados$letra)
 ```
 
+### Representando tabelas de contingencia
+
+```{r}
+barplot(table(mtcars$gear, mtcars$carb), beside = TRUE, col = 2:4)
+```
+
+
 ### Gráficos de Setores
 
 Para criar gráficos de setores no `R`, podemos utilizar a seguinte sintaxe `pie(dados)`, onde `dados` é um vetor numérico.
@@ -1009,6 +1016,8 @@ dados
 ```{r}
 pie(dados$numero, labels = dados$numero)
 ```
+
+## Gráficos para variáveis contínuas
 
 ### Histograma
 
@@ -1173,7 +1182,7 @@ plot(table(rep(1:5, 1:5)))
 points(1:5, 1:5)
 ```
 
-Exemplo utilizando `points`
+Exemplo utilizando `polygon`
 
 ```{r}
 plot(table(rep(1:5,1:5)))
@@ -1219,9 +1228,13 @@ for(i in 1:7)
 }
 ```
 
+Exemplo:
+
+```{r}
+plot(1:5, type = "l", lty = 4)
+```
 
 ### Texto E Legendas
-
 
 
 ### Função par {#funcao-par}
@@ -1368,11 +1381,6 @@ plot(1:5, xlab = "\160", main = "Título", sub = "Subtítulo")
 
 ### Cores
 
-### Representando tabelas de contingencia
-
-```{r}
-barplot(table(mtcars$gear, mtcars$carb), beside = TRUE, col = 2:4)
-```
 
 ### Representando funções matemáticas
 
@@ -1407,11 +1415,46 @@ curve(fun, from = -3, to = 3, n = 30, type = "o", pch = 3, lty = 4, col = 2,
 Dispositivos gráficos, são interfaces onde os gráficos gerados são exibidos, seja esse um dispositivo gráfico integrado na sua IDE, como por exemplo Rstudio, ou uma janela gráfica aberta no seu sistema operacional, ou até mesmo um arquivo no seu computador.
 No `R`, quando chamamos uma função que gera um gráfico, automaticamente é criado um dispositivo gráfico padrão, que varia de acordo com a plataforma que você está utilizando. Em sistemas operacionais baseados em Unix o dispositivo gráfico padrão é `X11()`, no sistema operacional Microsoft Windows o dispositivo gráfico padrão é `windows()`, e independente do sistema operacional quando utilizamos Rstudio o dispositivo gráfico padrão é o `RStudioGD()`, que é a janela integrada para gráficos.
 Ambos `X11()` e `windows()` podem ser chamados a qualquer momento dentro de uma sessão do `R` para criar uma janela externa onde serão exibidos os gráficos.
-Outros dispositivos gráficos além das janelas externas mencionadas são os dispositivos gráficos de arquivos que serão explicados na [próxima seção](#exportando-gráficos).
+Por padrão, é comum o uso da função `X11()` para criar novas janelas gráficas para a visualização de mais de um gráfico simultaneamente, como mostrado na imagem abaixo.
+
+```{r, echo = FALSE}
+knitr::include_graphics("img/x11.png")
+```
 
 ### Exportando gráficos
 
+Para exportarmos gráficos utilizando o `R`, é possível utilizar o botão de exportação de gráficos integrado na IDE Rstudio, porém é recomendado utilizar dispositivos gráficos para a geração de arquivos. Utilizando os dispositivos gráficos é possível configurar o gráfico que será exportado, como com o tamanho ou quantidade de pixels.
 
+Abaixo são descritos os tipos de dispositivos gráficos para geração de arquivos:
+
+- `pdf`
+- `postscript`
+- `xfig`
+- `bitmap`
+- `pictex`
+- `svg`
+- `png`
+- `jpeg`
+- `bmp`
+- `tiff`
+
+O uso básico das funções citadas funcionam de forma parecida, a sintaxe das funções funcionam da seguinte forma:
+
+```{r, eval = FALSE}
+jpeg(filename, width, height, units, pointsize, quality, bg)
+codigo do grafico
+dev.off()
+```
+
+A função `dev.off()` é utilizada para encerrar um dispositivo gráfico, e é essencial para a criação de imagens, a imagem não será exportada corretamente enquanto o dispositivo gráfico não for encerrado. A função `dev.off()` também pode ser usada para fechar janelas gráficas.
+
+Abaixo será exibido um exemplo com a função `jpeg` criando imagens jpg.
+
+```{r}
+jpeg("exemplo.jpg", 480, 480, "px", 12, 75, "white")
+plot(1:5)
+dev.off()
+```
 
 # Noções de Probabilidade
 
